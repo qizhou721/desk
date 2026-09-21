@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F55A9">
+  <meta name="description" content="课程表：按成员、周次和教学楼时间查看两位同学的课程安排。">
+  <title>Linky的课表 · 课表工作台</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230F55A9'/%3E%3Cpath d='M15 17h34v30H15z' fill='%23F6EFA8'/%3E%3Cpath d='M23 13v9M41 13v9M15 27h34' stroke='%230F55A9' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='25' cy='37' r='3' fill='%23F3A9AB'/%3E%3Ccircle cx='39' cy='37' r='3' fill='%23A474F2'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --navy-950:#0F55A9;--navy-900:#0F55A9;--navy-800:#5B6CEB;--ink:#0F55A9;--muted:#5B6CEB;
+      --line:#E9E7FA;--surface:#fff;--surface-soft:#FBF9FF;--canvas:#FBFAFF;--coral:#F3A9AB;
+      --slot-height:56px;--shadow:0 18px 48px rgba(19,55,78,.09);
+    }
+    *{box-sizing:border-box}
+    html{min-width:320px;background:var(--canvas)}
+    body{min-width:320px;margin:0;color:var(--ink);background:radial-gradient(circle at 76% -10%,rgba(197,227,235,.68),transparent 28rem),var(--canvas);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.45}
+    button{font:inherit;cursor:pointer}button:focus-visible,summary:focus-visible{outline:3px solid rgba(239,141,108,.5);outline-offset:3px}[hidden]{display:none!important}
+    .app-shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
+    .sidebar{position:sticky;top:0;display:flex;flex-direction:column;min-height:100vh;padding:28px 20px 22px;color:#edf7fb;background:linear-gradient(155deg,rgba(65,137,166,.14),transparent 34%),var(--navy-950);overflow:hidden}
+    .sidebar:after{position:absolute;right:-74px;bottom:96px;width:190px;height:190px;border:1px solid rgba(166,222,226,.14);border-radius:50%;content:"";box-shadow:0 0 0 22px rgba(166,222,226,.035),0 0 0 44px rgba(166,222,226,.025);pointer-events:none}
+    .brand{position:relative;z-index:1;display:flex;align-items:flex-start;gap:12px;padding:2px 4px 36px}.brand-mark{display:grid;flex:0 0 40px;place-items:center;width:40px;height:40px;border:1px solid rgba(218,247,245,.35);border-radius:12px;color:var(--navy-950);background:#dff1f3;box-shadow:0 8px 20px rgba(2,20,31,.18)}.brand-mark svg{width:22px;height:22px}.brand-copy{min-width:0}.brand-kicker,.section-label,.eyebrow,.control-label,.modal-kicker{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.brand-kicker{margin:0 0 2px;color:#8fb6c6}.brand h1{margin:0;color:#f7fcfd;font-size:26px;letter-spacing:-.04em}.brand p{max-width:145px;margin:6px 0 0;color:#91b0bd;font-size:13px}
+    .sidebar-block,.sidebar-bottom{position:relative;z-index:1}.section-label{margin:0 4px 11px;color:#ECA9F3}.person-stack{display:grid;gap:8px}.person-button{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:46px;padding:10px 12px;border:1px solid transparent;border-radius:13px;color:#F3A9D3;text-align:left;background:transparent;transition:.16s}.person-button:hover{color:#FFF;background:rgba(236,169,243,.14)}.person-button.is-active{border-color:rgba(236,169,243,.58);color:#FFF;background:rgba(164,116,242,.3);box-shadow:inset 3px 0 0 #F6EFA8}.person-main{display:flex;align-items:center;gap:10px;min-width:0}.avatar{display:grid;flex:0 0 28px;place-items:center;width:28px;height:28px;border-radius:9px;color:#0F55A9;background:#ECA9F3;font-size:12px;font-weight:900}.avatar.other{color:#6A3AB6;background:#F3A9D3}.avatar.merge{color:#6A3AB6;background:#F6EFA8}.person-name{overflow:hidden;font-size:14px;font-weight:700;text-overflow:ellipsis;white-space:nowrap}.person-count{color:#F6EFA8;font-size:12px;font-variant-numeric:tabular-nums}.sidebar-bottom{margin-top:auto}.sidebar-note{padding:14px;border:1px solid rgba(236,169,243,.36);border-radius:14px;color:#F6EFA8;background:rgba(236,169,243,.12)}.sidebar-note strong{display:block;margin-bottom:5px;color:#FFF;font-size:13px}.sidebar-note p{margin:0;font-size:12px;line-height:1.6}.semester-mark{display:flex;justify-content:space-between;margin-top:18px;color:#ECA9F3;font-size:12px}.semester-mark span:last-child{color:#F6EFA8;font-weight:700}
+    .content{min-width:0;padding:24px clamp(18px,3.5vw,54px) 42px}.topbar,.hero-row,.control-row,.schedule-toolbar{display:flex;align-items:center;justify-content:space-between;gap:18px}.topbar{min-height:32px;color:var(--muted);font-size:13px}.breadcrumb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.breadcrumb span{color:var(--navy-800);font-weight:750}.topbar-actions{display:flex;gap:8px;flex-shrink:0}.quiet-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:34px;padding:7px 11px;border:1px solid var(--line);border-radius:10px;color:var(--navy-800);background:rgba(255,255,255,.72);font-size:13px;font-weight:700;transition:.16s}.quiet-button:hover{border-color:#accad6;background:#fff}.quiet-button svg{width:16px;height:16px}
+    .hero-row{align-items:flex-end;padding:38px 0 24px}.eyebrow{margin:0 0 9px;color:#39828e}.hero-row h2{margin:0;color:var(--navy-950);font-size:clamp(28px,4vw,42px);font-weight:850;letter-spacing:-.06em;line-height:1.08}.hero-subtitle{max-width:620px;margin:10px 0 0;color:var(--muted);font-size:14px}.hero-stats{display:flex;gap:10px;flex-shrink:0}.stat{min-width:96px;padding:10px 12px;border:1px solid rgba(197,216,226,.86);border-radius:12px;background:rgba(255,255,255,.7)}.stat strong{display:block;color:var(--navy-900);font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:-.04em;line-height:1.1}.stat span{color:var(--muted);font-size:11px}
+    .control-shell{padding:13px 15px 14px;border:1px solid rgba(196,216,225,.9);border-radius:16px;background:rgba(255,255,255,.77);box-shadow:0 10px 30px rgba(16,58,92,.045)}.control-row{align-items:flex-start}.control-group{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.control-label{color:#718997;letter-spacing:.08em;white-space:nowrap}.segmented{display:inline-flex;flex-wrap:wrap;gap:3px;padding:3px;border-radius:11px;background:#eaf2f5}.segment{min-height:32px;padding:6px 12px;border:0;border-radius:8px;color:#6b818d;background:transparent;font-size:13px;font-weight:750;transition:.16s}.segment:hover{color:var(--navy-800)}.segment.is-active{color:var(--navy-900);background:#fff;box-shadow:0 2px 8px rgba(22,64,85,.1)}
+    .week-strip{display:flex;align-items:center;gap:8px;min-height:40px;margin-top:11px;padding-top:11px;border-top:1px solid #e5eef2;overflow-x:auto;scrollbar-width:thin}.week-strip-note{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.week-strip-note strong{color:var(--navy-800)}.week-chip{flex:0 0 auto;min-width:42px;min-height:30px;padding:5px 9px;border:1px solid var(--line);border-radius:9px;color:#6a818f;background:#fff;font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}.week-chip:hover{border-color:#8cc5c3;color:var(--navy-800)}.week-chip.is-active{border-color:var(--navy-800);color:#fff;background:var(--navy-800)}
+    .time-reference{margin:14px 0;border:1px solid rgba(196,216,225,.9);border-radius:15px;background:rgba(255,255,255,.67);overflow:hidden}.time-reference summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 16px;color:var(--navy-800);font-size:13px;font-weight:800;cursor:pointer;list-style:none}.time-reference summary::-webkit-details-marker{display:none}.time-reference summary:after{content:"展开";color:var(--muted);font-size:12px;font-weight:600}.time-reference[open] summary:after{content:"收起"}.time-reference summary span{display:inline-flex;align-items:center;gap:8px}.time-reference summary svg{width:16px;height:16px;color:#3a8790}.time-table-wrap{padding:0 10px 10px;overflow-x:auto}.time-table{width:100%;min-width:720px;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--line);border-radius:11px;color:#526b78;font-size:12px}.time-table th,.time-table td{padding:8px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:left}.time-table th{color:var(--navy-800);background:#eff7f9;font-size:12px}.time-table tr:last-child td{border-bottom:0}.time-table th:last-child,.time-table td:last-child{border-right:0}.time-table td:first-child{width:100px;color:var(--navy-800);font-weight:800;white-space:nowrap}
+    .schedule-card{border:1px solid rgba(196,216,225,.95);border-radius:17px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden}.schedule-toolbar{align-items:flex-start;padding:17px 18px 15px;border-bottom:1px solid #e1ebef}.schedule-heading{display:flex;align-items:center;gap:11px;min-width:0}.schedule-heading h3{margin:0;color:var(--navy-900);font-size:15px}.schedule-heading p{margin:2px 0 0;color:var(--muted);font-size:12px}.schedule-dot{width:9px;height:9px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 5px #fff0ea}.legend{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;color:var(--muted);font-size:12px}.legend-item{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}.legend-swatch{width:9px;height:9px;border-radius:3px;background:var(--legend-color,#8ab9c7)}
+    .schedule-scroll{width:100%;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-color:#b6cbd5 transparent;scrollbar-width:thin}.calendar-grid{display:grid;grid-template-columns:76px repeat(7,minmax(150px,1fr));grid-template-rows:63px auto;min-width:1180px}.calendar-corner{grid-column:1;grid-row:1;display:grid;place-items:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:#8297a2;background:#f7fafb;font-size:11px;font-weight:800;letter-spacing:.08em}.day-head{display:flex;align-items:center;justify-content:space-between;gap:7px;padding:10px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#f7fafb}.day-head.is-today{background:#e7f4f2}.day-name{color:#476371;font-size:13px;font-weight:850}.day-date{color:#93a6b1;font-size:11px;font-variant-numeric:tabular-nums}.day-head.is-today .day-name,.day-head.is-today .day-date{color:#1e777d}.time-rail{position:relative;display:grid;grid-column:1;grid-row:2;grid-template-rows:repeat(15,var(--slot-height));border-right:1px solid var(--line);background:#fbfcfd}.time-label{display:flex;align-items:flex-start;justify-content:center;padding-top:12px;border-bottom:1px solid #e7eef1;color:#7d95a1;font-size:11px;font-weight:750;white-space:nowrap}.day-body{position:relative;grid-row:2;min-width:0;height:calc(var(--slot-height) * 15);border-right:1px solid var(--line);background:linear-gradient(to bottom,rgba(236,244,247,.35),transparent 15%),repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--slot-height) - 1px),#e3edf1 calc(var(--slot-height) - 1px),#e3edf1 var(--slot-height))}.day-body.is-today{background:linear-gradient(to bottom,rgba(226,246,242,.9),transparent 30%),repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--slot-height) - 1px),#d7e9e9 calc(var(--slot-height) - 1px),#d7e9e9 var(--slot-height))}
+    .course-card{position:absolute;top:calc((var(--course-start) - 1) * var(--slot-height) + 5px);left:calc(var(--course-lane) * (100% / var(--course-lanes)) + 4px);width:calc(100% / var(--course-lanes) - 8px);height:calc(var(--course-span) * var(--slot-height) - 10px);padding:9px;border:0;border-left:3px solid var(--course-line);border-radius:8px;color:var(--course-text);text-align:left;background:var(--course-bg);box-shadow:0 4px 12px rgba(21,58,77,.05);overflow:hidden;transition:.15s;z-index:2}.course-card:hover{filter:saturate(1.05);box-shadow:0 9px 18px rgba(21,58,77,.13);transform:translateY(-2px);z-index:5}.course-card-top{display:flex;align-items:center;justify-content:space-between;gap:5px;min-height:17px}.course-owner,.course-week{display:inline-flex;align-items:center;min-width:0;padding:2px 5px;border-radius:4px;font-size:10px;font-weight:850;line-height:1.2;white-space:nowrap}.course-owner{color:var(--course-text);background:rgba(255,255,255,.56)}.course-week{max-width:100%;color:rgba(17,47,63,.68);background:rgba(255,255,255,.5);overflow:hidden;text-overflow:ellipsis}.course-card strong{display:-webkit-box;margin:5px 0 3px;color:var(--course-text);font-size:13px;font-weight:900;letter-spacing:-.02em;line-height:1.25;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2}.course-code{color:rgba(17,47,63,.64);font-size:11px;font-variant-numeric:tabular-nums}.course-meta{display:grid;gap:1px;margin-top:4px;color:rgba(17,47,63,.77);font-size:11px;line-height:1.3}.course-meta span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.course-card.is-compact{padding-top:7px;padding-bottom:6px}.course-card.is-compact strong{margin-top:3px;font-size:12px;-webkit-line-clamp:1}.course-card.is-compact .course-meta{display:none}
+    .empty-state{padding:48px 20px 56px;color:var(--muted);text-align:center}.empty-state strong{display:block;margin-bottom:5px;color:var(--navy-800)}.schedule-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px;border-top:1px solid #e5edf0;color:#8195a0;font-size:12px}.schedule-caption span:last-child{color:#537581;font-weight:700}.page-note{display:flex;align-items:flex-start;gap:8px;margin:15px 2px 0;color:#7b919c;font-size:12px}.page-note svg{flex:0 0 15px;width:15px;height:15px;color:#4f9b9a}
+    .modal-backdrop{position:fixed;inset:0;display:grid;place-items:center;padding:20px;background:rgba(8,35,55,.46);backdrop-filter:blur(5px);z-index:20}.modal{position:relative;width:min(520px,100%);max-height:min(680px,calc(100vh - 40px));padding:24px;border:1px solid rgba(255,255,255,.65);border-radius:20px;background:#fff;box-shadow:0 28px 80px rgba(8,35,55,.28);overflow:auto}.modal-close{position:absolute;top:15px;right:15px;display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--line);border-radius:9px;color:#67808d;background:#f6fafb;font-size:20px}.modal-kicker{margin:0 0 8px;color:#3d8a91}.modal h3{max-width:410px;margin:0;color:var(--navy-950);font-size:26px;letter-spacing:-.045em;line-height:1.12}.modal-subtitle{margin:8px 0 20px;color:var(--muted);font-size:13px}.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.detail-item{min-width:0;padding:11px 12px;border:1px solid #e4edf0;border-radius:11px;background:#f8fbfc}.detail-item span{display:block;margin-bottom:3px;color:#8397a1;font-size:11px}.detail-item strong{display:block;overflow:hidden;color:var(--navy-800);font-size:13px;text-overflow:ellipsis;white-space:nowrap}.time-callout{margin-top:12px;padding:13px 14px;border-left:3px solid #65b7b0;border-radius:10px;color:#476976;background:#edf8f6;font-size:13px;line-height:1.6}.time-callout strong{color:#246b6d}.modal-note{margin:13px 0 0;color:#748c98;font-size:12px;line-height:1.6}
+    @media(max-width:1060px){.app-shell{grid-template-columns:210px minmax(0,1fr)}.content{padding-right:24px;padding-left:24px}.hero-row{align-items:flex-start;flex-direction:column}.hero-stats{width:100%}.stat{flex:1}}
+    @media(max-width:780px){:root{--slot-height:54px}.app-shell{display:block}.sidebar{position:static;min-height:auto;padding:16px}.brand{align-items:center;padding-bottom:14px}.brand p,.sidebar-bottom,.section-label{display:none}.person-stack{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.person-button{min-height:40px;justify-content:center;padding:6px 8px}.person-main{gap:6px}.person-count{display:none}.content{padding:17px 14px 30px}.topbar,.hero-row,.control-row,.schedule-toolbar{align-items:flex-start;flex-direction:column}.topbar{gap:10px}.topbar-actions{width:100%;justify-content:space-between}.topbar-actions button{flex:1}.hero-row{gap:18px;padding:27px 0 18px}.hero-row h2{font-size:33px}.hero-stats{gap:7px}.stat{min-width:0;padding:9px 10px}.stat strong{font-size:19px}.control-shell{padding:13px 12px 12px}.control-group{width:100%;align-items:flex-start;flex-direction:column;gap:7px}.segmented{width:100%}.segment{flex:1}.schedule-toolbar{gap:10px}.legend{justify-content:flex-start}.schedule-caption{align-items:flex-start;flex-direction:column;gap:3px}.modal{padding:21px 17px 18px}}
+    @media(max-width:430px){.brand h1{font-size:23px}.person-name{font-size:12px}.avatar{width:24px;height:24px;font-size:10px}.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);width:100%}.detail-grid{grid-template-columns:1fr}}
+    /* Linky palette: blue, indigo, violet, pink, peach and butter yellow. */
+    body{color:#0F55A9;background:radial-gradient(circle at 76% -10%,rgba(164,116,242,.17),transparent 28rem),#FBFAFF}
+    .sidebar{color:#FFF;background:linear-gradient(155deg,rgba(164,116,242,.24),transparent 34%),#0F55A9}
+    .sidebar:after{border-color:rgba(246,239,168,.3);box-shadow:0 0 0 22px rgba(236,169,243,.08),0 0 0 44px rgba(246,239,168,.06)}
+    .brand-mark{color:#0F55A9;background:#F6EFA8;border-color:rgba(246,239,168,.72)}
+    .brand-kicker{color:#F6EFA8}.brand h1{color:#FFF}.brand p{color:#F3A9D3}
+    .section-label{color:#ECA9F3}.person-button{color:#F3A9D3}.person-button:hover{color:#FFF;background:rgba(236,169,243,.14)}
+    .person-button.is-active{border-color:rgba(236,169,243,.58);background:rgba(164,116,242,.3);box-shadow:inset 3px 0 0 #F6EFA8}
+    .avatar{color:#0F55A9;background:#ECA9F3}.avatar.other{color:#6A3AB6;background:#F3A9D3}.avatar.merge{color:#6A3AB6;background:#F6EFA8}.person-count{color:#F6EFA8}
+    .sidebar-note{border-color:rgba(236,169,243,.36);color:#F6EFA8;background:rgba(236,169,243,.12)}.sidebar-note strong{color:#FFF}.semester-mark{color:#ECA9F3}.semester-mark span:last-child{color:#F6EFA8}
+    .quiet-button{border-color:#E9E7FA;color:#0F55A9;background:rgba(255,255,255,.84)}.quiet-button:hover{border-color:#A474F2;background:#FFF}
+    .eyebrow{color:#A474F2}.hero-row h2{color:#0F55A9}.stat strong{color:#0F55A9}
+    .control-shell,.time-reference,.schedule-card{border-color:#E9E7FA}.segment.is-active{color:#0F55A9}.week-chip.is-active{border-color:#0F55A9;background:#0F55A9}
+    .time-reference summary{color:#0F55A9}.time-reference summary svg{color:#A474F2}.time-table th{color:#0F55A9;background:#F6EFA8}
+    .schedule-heading h3{color:#0F55A9}.schedule-dot{background:#F3A9AB;box-shadow:0 0 0 5px #FCE9E8}.day-head.is-today{background:#F3A9D3}
+    .day-head.is-today .day-name,.day-head.is-today .day-date{color:#6A3AB6}.modal-kicker{color:#A474F2}.modal h3{color:#0F55A9}.detail-item strong{color:#0F55A9}.time-callout{border-left-color:#A474F2;background:#F6EFA8;color:#6A3AB6}.time-callout strong{color:#6A3AB6}
+    @media(max-width:780px){html,body{overflow-x:hidden}.content{max-width:100vw}.calendar-grid{min-width:1020px}.schedule-scroll{border-top:1px solid #E9E7FA}.course-card{padding:8px 7px}.course-card strong{font-size:12px}.course-meta{font-size:10px}.course-week,.course-owner{font-size:9px}}
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="课表导航">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4.5h14v15H5z" stroke="currentColor" stroke-width="1.7"/><path d="M8.5 3v4M15.5 3v4M5 9h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M9 13h.01M15 13h.01M9 16.5h.01M15 16.5h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+        <div class="brand-copy"><p class="brand-kicker">SEMESTER VIEW</p><h1>课程表</h1><p>两份课表，一眼找到共同空档。</p></div>
+      </div>
+      <div class="sidebar-block">
+        <p class="section-label">课表成员</p>
+        <div class="person-stack" id="personStack">
+          <button class="person-button is-active" type="button" data-view="me"><span class="person-main"><span class="avatar">祺</span><span class="person-name">祺的课表</span></span><span class="person-count" data-count="me">—</span></button>
+          <button class="person-button" type="button" data-view="other"><span class="person-main"><span class="avatar other">琳</span><span class="person-name">琳的课表</span></span><span class="person-count" data-count="other">—</span></button>
+          <button class="person-button" type="button" data-view="merged"><span class="person-main"><span class="avatar merge">麒</span><span class="person-name">麒麟课表</span></span><span class="person-count" data-count="merged">—</span></button>
+        </div>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><strong>学期起点</strong><p>9月14日（星期一）为第1周，当前课表按16周学期整理。</p></div>
+        <div class="semester-mark"><span>2026 秋季学期</span><span>1—16周</span></div>
+      </div>
+    </aside>
+    <main class="content">
+      <div class="topbar">
+        <div class="breadcrumb"><span>学期课表</span><span aria-hidden="true"> / </span>2026 秋季学期</div>
+        <div class="topbar-actions">
+          <button class="quiet-button" id="timeToggle" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h16v13H4zM4 10h16M9 5.5V3.8M15 5.5V3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>节次时间</button>
+          <button class="quiet-button" id="resetWeek" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8.5A7.5 7.5 0 1 1 4.8 15M5 4.5v4h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>回到本周</button>
+        </div>
+      </div>
+      <section class="hero-row" aria-labelledby="pageTitle">
+        <div><p class="eyebrow">WEEKLY PLANNER</p><h2 id="pageTitle">Linky的课表</h2><p class="hero-subtitle" id="pageSubtitle">按截图整理的课程数据；切换成员或周次即可即时查看对应安排。</p></div>
+        <div class="hero-stats" id="heroStats" aria-label="课表摘要"></div>
+      </section>
+      <section class="control-shell" aria-label="课表筛选">
+        <div class="control-row">
+          <div class="control-group"><span class="control-label">显示对象</span><div class="segmented" id="viewControl" role="group" aria-label="选择显示对象"><button class="segment is-active" type="button" data-view="me">祺</button><button class="segment" type="button" data-view="other">琳</button><button class="segment" type="button" data-view="merged">麒麟</button></div></div>
+          <div class="control-group"><span class="control-label">周次范围</span><div class="segmented" id="scopeControl" role="group" aria-label="选择周次范围"><button class="segment is-active" type="button" data-scope="all">全部周数</button><button class="segment" type="button" data-scope="current">本周</button><button class="segment" type="button" data-scope="week">指定周数</button></div></div>
+        </div>
+        <div class="week-strip" id="weekStrip" aria-label="指定周数"></div>
+      </section>
+      <details class="time-reference" id="timeReference" open>
+        <summary><span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5.5h16v13H4zM4 10h16M8 14h3M13 14h3M8 17h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>每节课时间对照（按教学楼）</span></summary>
+        <div class="time-table-wrap"><table class="time-table"><thead><tr><th>节次</th><th>教学楼 A、F 和 J301室</th><th>教学楼 B、C 和 J302室<br>其他楼、教学场所</th><th>教学楼 D、E 和 J303室</th></tr></thead><tbody id="timeTableBody"></tbody></table></div>
+      </details>
+      <section class="schedule-card" aria-label="课程安排">
+        <div class="schedule-toolbar"><div class="schedule-heading"><span class="schedule-dot" aria-hidden="true"></span><div><h3 id="scheduleHeading">Linky的课表 · 祺的课表</h3><p id="scheduleSubheading">点击任意课程卡片查看详情</p></div></div><div class="legend" id="legend" aria-label="图例"></div></div>
+        <div class="schedule-scroll"><div class="calendar-grid" id="calendarGrid"></div></div>
+        <div class="empty-state" id="emptyState" hidden><strong>这一周暂时没有课程</strong><span>可以切换其他成员，或选择指定周数查看。</span></div>
+        <div class="schedule-caption"><span id="scheduleCaption">共16周 · 9月14日为第1周</span><span>点击课程查看完整信息</span></div>
+      </section>
+      <p class="page-note"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 10.5v5M12 7.5h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>课程名称、代码、教室、周数和老师按你提供的课表截图整理；部分单双周/分教室信息保留在课程详情中。</p>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="courseModal" hidden>
+    <article class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" type="button" aria-label="关闭课程详情">×</button>
+      <p class="modal-kicker" id="modalKicker">课程详情</p><h3 id="modalTitle">课程名称</h3><p class="modal-subtitle" id="modalSubtitle"></p><div class="detail-grid" id="modalDetails"></div><div class="time-callout" id="modalTime"></div><p class="modal-note" id="modalNote"></p>
+    </article>
+  </div>
+  <script>
+    (function(){
+      var TOTAL_WEEKS=16, SEMESTER_START=new Date('2026-09-14T00:00:00'), DAY_NAMES=['星期一','星期二','星期三','星期四','星期五','星期六','星期日'];
+      var SECTION_LABELS=['第1节','第2节','第3节','第4节','第5节','第6节','第7节','第8节','第9节','第10节','第11节','第12节','第13节','第14节','第15节'];
+      var TIME_ROWS=[
+        {label:'第1、2节',a:'8:15–9:35',common:'8:15–9:35',d:'8:15–9:35'},
+        {label:'第3节',a:'9:55–10:35',common:'9:55–11:15',d:'10:15–11:35'},
+        {label:'第4节',a:'10:40–12:00',common:'9:55–11:15',d:'10:15–11:35'},
+        {label:'第5节',a:'10:40–12:00',common:'11:20–12:00',d:'11:40–12:20'},
+        {label:'第6、7节',a:'13:20–14:40',common:'13:20–14:40',d:'13:20–14:40'},
+        {label:'第8、9节',a:'15:00–16:20',common:'15:00–16:20',d:'15:00–16:20'},
+        {label:'第10、11节',a:'16:35–17:55',common:'16:35–17:55',d:'16:35–17:55'},
+        {label:'第12、13节',a:'18:10–19:30',common:'18:10–19:30',d:'18:10–19:30'},
+        {label:'第14节',a:'19:35–20:15',common:'19:35–20:15',d:'19:35–20:15'},
+        {label:'第15节',a:'20:20–21:00',common:'20:20–21:00',d:'20:20–21:00'}
+      ];
+      var TIME_START={
+        a:{1:'8:15',2:'8:15',3:'9:55',4:'10:40',5:'10:40',6:'13:20',7:'13:20',8:'15:00',9:'15:00',10:'16:35',11:'16:35',12:'18:10',13:'18:10',14:'19:35',15:'20:20'},
+        common:{1:'8:15',2:'8:15',3:'9:55',4:'9:55',5:'11:20',6:'13:20',7:'13:20',8:'15:00',9:'15:00',10:'16:35',11:'16:35',12:'18:10',13:'18:10',14:'19:35',15:'20:20'},
+        d:{1:'8:15',2:'8:15',3:'10:15',4:'10:15',5:'11:40',6:'13:20',7:'13:20',8:'15:00',9:'15:00',10:'16:35',11:'16:35',12:'18:10',13:'18:10',14:'19:35',15:'20:20'}
+      };
+      var TIME_END={
+        a:{1:'9:35',2:'9:35',3:'10:35',4:'12:00',5:'12:00',6:'14:40',7:'14:40',8:'16:20',9:'16:20',10:'17:55',11:'17:55',12:'19:30',13:'19:30',14:'20:15',15:'21:00'},
+        common:{1:'9:35',2:'9:35',3:'11:15',4:'11:15',5:'12:00',6:'14:40',7:'14:40',8:'16:20',9:'16:20',10:'17:55',11:'17:55',12:'19:30',13:'19:30',14:'20:15',15:'21:00'},
+        d:{1:'9:35',2:'9:35',3:'11:35',4:'11:35',5:'12:20',6:'14:40',7:'14:40',8:'16:20',9:'16:20',10:'17:55',11:'17:55',12:'19:30',13:'19:30',14:'20:15',15:'21:00'}
+      };
+      var CARD_PALETTE={
+        blue:{bg:'#EAF0FF',line:'#0F55A9',text:'#0F55A9'},
+        teal:{bg:'#E8FBF6',line:'#39B9A7',text:'#147B6D'},
+        coral:{bg:'#FFF0EC',line:'#F3A9AB',text:'#A74B58'},
+        violet:{bg:'#F2EAFF',line:'#CB87F1',text:'#6A3AB6'},
+        green:{bg:'#F7F1D8',line:'#F5DBA7',text:'#9C6C2C'},
+        sand:{bg:'#FFF7D6',line:'#F6EFA8',text:'#857012'},
+        pink:{bg:'#FDE7F4',line:'#F3A9D3',text:'#9C4E7E'},
+        me:{bg:'#EAF0FF',line:'#0F55A9',text:'#0F55A9'},
+        other:{bg:'#F2E9FF',line:'#A474F2',text:'#6A3AB6'}
+      };
+      var COURSE_COLORS={
+        me:{'计算机组成与结构':'blue','操作系统':'teal','JAVA程序设计':'coral','数据库原理':'violet','形势与政策7':'green','形势与政策5':'sand','计算机硬件综合实验':'pink'},
+        other:{'机器人控制综合实验':'blue','机器人控制技术':'violet','过程控制系统':'teal','运动控制系统':'green'}
+      };
+      function range(start,end){var a=[];for(var i=start;i<=end;i++)a.push(i);return a}
+      function event(owner,data){return Object.assign({owner:owner,building:'common',weeks:range(1,TOTAL_WEEKS),color:'blue'},data)}
+      var schedules={
+        me:[
+          event('me',{id:'me-computer-mon',day:0,start:3,end:4,name:'计算机组成与结构',code:'1440',room:'C315多',teacher:'李莹',weeks:range(1,12),color:'blue'}),
+          event('me',{id:'me-os-mon',day:0,start:6,end:7,name:'操作系统',code:'0032',room:'F102多',teacher:'尹玲',building:'a',color:'green'}),
+          event('me',{id:'me-java-mon',day:0,start:12,end:13,name:'JAVA程序设计',code:'1438',room:'7607 / E302多',teacher:'孔丽红',color:'coral',note:'单双周分教室：单周多在 E302多，双周多在 7607。'}),
+          event('me',{id:'me-db-mon',day:0,start:14,end:15,name:'数据库原理',code:'0031',room:'7607 / E310多',teacher:'黄勤、孔丽红',color:'teal',note:'截图中该课程在不同周次出现不同教室与授课教师。'}),
+          event('me',{id:'me-policy-7',day:1,start:6,end:7,name:'形势与政策7',code:'1368',room:'C222多',teacher:'任泽宇',weeks:range(6,9),color:'sand'}),
+          event('me',{id:'me-policy-5-tue',day:1,start:8,end:9,name:'形势与政策5',code:'0474',room:'E517多',teacher:'沈梦云',weeks:[2,3,5],color:'sand'}),
+          event('me',{id:'me-computer-wed',day:2,start:3,end:4,name:'计算机组成与结构',code:'1440',room:'B110多',teacher:'李莹',weeks:[1,2,3,5,6,7,8,9,10,11,12],color:'blue'}),
+          event('me',{id:'me-db-wed',day:2,start:12,end:13,name:'数据库原理',code:'0031',room:'E310多',teacher:'孔丽红',color:'teal',note:'第2周截图显示黄勤授课，其余周次按孔丽红整理。'}),
+          event('me',{id:'me-os-thu',day:3,start:3,end:4,name:'操作系统',code:'0032',room:'X7622',teacher:'尹玲',color:'green'}),
+          event('me',{id:'me-hardware-thu',day:3,start:6,end:11,name:'计算机硬件综合实验',code:'1462',room:'X7605',teacher:'陈垣',weeks:range(6,15),color:'violet'}),
+          event('me',{id:'me-computer-sat',day:5,start:3,end:4,name:'计算机组成与结构',code:'1440',room:'B110多',teacher:'李莹',weeks:[4],color:'blue'}),
+          event('me',{id:'me-db-sat',day:5,start:12,end:13,name:'数据库原理',code:'0031',room:'E310多',teacher:'孔丽红',weeks:[4],color:'teal'}),
+          event('me',{id:'me-policy-5-sun',day:6,start:8,end:9,name:'形势与政策5',code:'0474',room:'E517多',teacher:'沈梦云',weeks:[1],color:'sand'})
+        ],
+        other:[
+          event('other',{id:'other-robot-lab-mon-1',day:0,start:1,end:5,name:'机器人控制综合实验',code:'1644',room:'现代交通工程中心 7513–7515',teacher:'刘烨',weeks:[11,12],color:'blue',note:'实验课连续占用第1–5节。'}),
+          event('other',{id:'other-robot-tech-mon',day:0,start:8,end:9,name:'机器人控制技术',code:'1657',room:'E306多',teacher:'汤信 / 胡凌燕',weeks:range(1,8),color:'teal'}),
+          event('other',{id:'other-robot-lab-mon-2',day:0,start:6,end:9,name:'机器人控制综合实验',code:'1644',room:'现代交通工程中心 7513–7515',teacher:'刘烨',weeks:[11,12],color:'teal'}),
+          event('other',{id:'other-robot-lab-mon-3',day:0,start:10,end:15,name:'机器人控制综合实验',code:'1644',room:'现代交通工程中心 7513–7515',teacher:'刘烨',weeks:[11,12],color:'blue'}),
+          event('other',{id:'other-robot-lab-tue-1',day:1,start:1,end:5,name:'机器人控制综合实验',code:'1644',room:'现代交通工程中心 7513–7515',teacher:'刘烨',weeks:[11,12],color:'violet'}),
+          event('other',{id:'other-process-tue',day:1,start:3,end:5,name:'过程控制系统',code:'1658',room:'B311多',teacher:'吴健珍',weeks:[1,2,3,5,6,8],color:'violet'}),
+          event('other',{id:'other-robot-tech-tue',day:1,start:6,end:9,name:'机器人控制技术',code:'1657',room:'C222多',teacher:'郭丽娟',weeks:[5,6,8,9],color:'teal'}),
+          event('other',{id:'other-robot-lab-tue-2',day:1,start:6,end:9,name:'机器人控制综合实验',code:'1644',room:'现代交通工程中心 7513–7515',teacher:'刘烨',weeks:[11,12],color:'teal'}),
+          event('other',{id:'other-robot-lab-tue-3',day:1,start:10,end:15,name:'机器人控制综合实验',code:'1644',room:'现代交通工程中心 7513–7515',teacher:'刘烨',weeks:[11,12],color:'blue'}),
+          event('other',{id:'other-motion-wed-1',day:2,start:1,end:4,name:'运动控制系统',code:'1646',room:'现代交通工程中心 7513–7515',teacher:'王晓军',weeks:[12],color:'green'}),
+          event('other',{id:'other-motion-wed-2',day:2,start:3,end:4,name:'运动控制系统',code:'1646',room:'E410多',teacher:'王晓军',weeks:[1,2,3,5,6,7,8,9,10,11],color:'green'}),
+          event('other',{id:'other-process-wed',day:2,start:6,end:7,name:'过程控制系统',code:'1658',room:'D314多',teacher:'吴健珍',weeks:[1,2,3,5,6,7,8],color:'violet'}),
+          event('other',{id:'other-robot-tech-wed',day:2,start:10,end:11,name:'机器人控制技术',code:'1657',room:'B206多',teacher:'汤信',weeks:[1,2,3],color:'blue'}),
+          event('other',{id:'other-motion-fri',day:4,start:1,end:2,name:'运动控制系统',code:'1646',room:'E410多',teacher:'王晓军',weeks:range(1,11),color:'green'}),
+          event('other',{id:'other-robot-tech-fri',day:4,start:3,end:4,name:'机器人控制技术',code:'1657',room:'E306多',teacher:'胡凌燕',weeks:[7,8],color:'blue'}),
+          event('other',{id:'other-motion-sat',day:5,start:3,end:4,name:'运动控制系统',code:'1646',room:'E410多',teacher:'王晓军',weeks:[4],color:'green'}),
+          event('other',{id:'other-process-sat',day:5,start:6,end:7,name:'过程控制系统',code:'1658',room:'D314多',teacher:'吴健珍',weeks:[4],color:'violet'}),
+          event('other',{id:'other-robot-tech-sat',day:5,start:10,end:11,name:'机器人控制技术',code:'1657',room:'B206多',teacher:'汤信',weeks:[4],color:'blue'}),
+          event('other',{id:'other-process-sun',day:6,start:3,end:4,name:'过程控制系统',code:'1658',room:'B311多',teacher:'吴健珍',weeks:[1],color:'violet'})
+        ]
+      };
+      var VIEW_LABELS={me:'祺的课表',other:'琳的课表',merged:'麒麟课表'},VIEW_SHORT={me:'祺',other:'琳'};
+      var state={view:'me',scope:'all',week:2};
+      function $(s){return document.querySelector(s)} function $$(s){return Array.prototype.slice.call(document.querySelectorAll(s))}
+      function currentWeek(){var now=new Date();now.setHours(0,0,0,0);var days=Math.floor((now.getTime()-SEMESTER_START.getTime())/86400000);return Math.min(TOTAL_WEEKS,Math.max(1,Math.floor(days/7)+1))}
+      function weekStart(week){var d=new Date(SEMESTER_START);d.setDate(d.getDate()+(week-1)*7);return d}
+      function dateText(d){return (d.getMonth()+1)+'/'+d.getDate()}
+      function weekRange(week){var a=weekStart(week),b=new Date(a);b.setDate(b.getDate()+6);return dateText(a)+'–'+dateText(b)}
+      function weekText(weeks){var sorted=Array.from(new Set(weeks)).sort(function(a,b){return a-b}),chunks=[],start=sorted[0],prev=sorted[0];if(!sorted.length)return'无周次';for(var i=1;i<sorted.length;i++){var cur=sorted[i];if(cur===prev+1){prev=cur;continue}chunks.push(start===prev?String(start):start+'–'+prev);start=prev=cur}chunks.push(start===prev?String(start):start+'–'+prev);return chunks.join('、')+'周'}
+      function activeWeek(){return state.scope==='current'?currentWeek():state.week}
+      function visibleEvents(){var owners=state.view==='merged'?['me','other']:[state.view],items=[];owners.forEach(function(owner){schedules[owner].forEach(function(item){if(state.scope==='all'||item.weeks.indexOf(activeWeek())>=0)items.push(Object.assign({},item))})});return items}
+      function courseColorKey(item){return(COURSE_COLORS[item.owner]&&COURSE_COLORS[item.owner][item.name])||item.color||'blue'}
+      function courseTime(item){var b=TIME_START[item.building]?item.building:'common';return TIME_START[b][item.start]+'–'+TIME_END[b][item.end]}
+      function renderTimeTable(){$('#timeTableBody').innerHTML=TIME_ROWS.map(function(row){return'<tr><td>'+row.label+'</td><td>'+row.a+'</td><td>'+row.common+'</td><td>'+row.d+'</td></tr>'}).join('')}
+      function renderControls(){
+        $$('[data-view]').forEach(function(btn){var yes=btn.dataset.view===state.view;btn.classList.toggle('is-active',yes);if(btn.classList.contains('person-button'))btn.setAttribute('aria-current',yes?'true':'false')});
+        $$('[data-scope]').forEach(function(btn){btn.classList.toggle('is-active',btn.dataset.scope===state.scope)});
+        if(state.scope==='week'){$('#weekStrip').innerHTML=Array.from({length:TOTAL_WEEKS},function(_,i){var w=i+1;return'<button class="week-chip '+(w===state.week?'is-active':'')+'" type="button" data-week="'+w+'">第'+w+'周</button>'}).join('')}
+        else{var w=activeWeek(),prefix=state.scope==='current'?'当前日期落在':'课表日期框架';$('#weekStrip').innerHTML='<div class="week-strip-note"><strong>'+prefix+'第'+w+'周</strong><span>'+weekRange(w)+'</span><span>·</span><span>9月14日为第1周</span></div>'}
+      }
+      function renderStats(){var items=visibleEvents(),names=new Set(items.map(function(i){return i.name}));$('#heroStats').innerHTML='<div class="stat"><strong>'+items.length+'</strong><span>课次条目</span></div><div class="stat"><strong>'+names.size+'</strong><span>课程名称</span></div><div class="stat"><strong>'+(state.view==='merged'?2:1)+'</strong><span>显示成员</span></div>';Object.keys(schedules).forEach(function(owner){var el=document.querySelector('[data-count="'+owner+'"]');if(el)el.textContent=schedules[owner].length+'项'});var merged=document.querySelector('[data-count="merged"]');if(merged)merged.textContent=(schedules.me.length+schedules.other.length)+'项'}
+      function renderHeader(){var w=activeWeek(),scopeLabel=state.scope==='all'?'完整学期':(state.scope==='current'?'第'+w+'周 · 本周':'第'+w+'周'),label=state.scope==='all'?'1—16周':weekRange(w)+' · 第'+w+'周';$('#pageTitle').textContent='Linky的课表';$('#pageSubtitle').textContent=state.scope==='all'?'按周次收拢展示整学期安排；点击课程卡片可查看教室、老师和教学楼时间。':label+'，已筛选出当前显示对象在这一周实际发生的课程。';$('#scheduleHeading').textContent='Linky的课表 · '+VIEW_LABELS[state.view]+' · '+scopeLabel;$('#scheduleSubheading').textContent=state.scope==='all'?'点击任意课程卡片查看详情；课程卡片上的周次为原课表周次':'点击任意课程卡片查看详情';$('#scheduleCaption').textContent=state.scope==='all'?'共16周 · 9月14日为第1周':label+' · 学期起点为9月14日'}
+      function lanes(items){var ends=[],out=[];items.slice().sort(function(a,b){return a.start-b.start||b.end-a.end}).forEach(function(item){var lane=ends.findIndex(function(last){return last<item.start});if(lane<0){lane=ends.length;ends.push(item.end)}else ends[lane]=item.end;out.push({item:item,lane:lane})});return{items:out,total:Math.max(1,ends.length)}}
+      function renderCalendar(){
+        var w=activeWeek(),items=visibleEvents(),grid=$('#calendarGrid'),frag=document.createDocumentFragment(),corner=document.createElement('div');corner.className='calendar-corner';corner.textContent='节次';frag.appendChild(corner);
+        for(var day=0;day<7;day++){var head=document.createElement('div'),date=weekStart(w);date.setDate(date.getDate()+day);var today=w===currentWeek()&&day===((new Date().getDay()+6)%7);head.className='day-head '+(today?'is-today':'');head.style.gridColumn=String(day+2);head.style.gridRow='1';head.innerHTML='<span class="day-name">'+DAY_NAMES[day]+'</span><span class="day-date">'+dateText(date)+'</span>';frag.appendChild(head)}
+        var rail=document.createElement('div');rail.className='time-rail';rail.innerHTML=SECTION_LABELS.map(function(x){return'<div class="time-label">'+x+'</div>'}).join('');frag.appendChild(rail);
+        for(var d=0;d<7;d++){var body=document.createElement('div'),todayBody=w===currentWeek()&&d===((new Date().getDay()+6)%7),positioned=lanes(items.filter(function(x){return x.day===d}));body.className='day-body '+(todayBody?'is-today':'');body.style.gridColumn=String(d+2);body.style.setProperty('--course-lanes',positioned.total);positioned.items.forEach(function(pos){var item=pos.item,p=state.view==='merged'?(item.owner==='me'?CARD_PALETTE.me:CARD_PALETTE.other):(CARD_PALETTE[courseColorKey(item)]||CARD_PALETTE.blue),card=document.createElement('button'),compact=item.end-item.start<2;card.type='button';card.className='course-card '+(compact?'is-compact':'');card.dataset.courseId=item.id;card.dataset.courseOwner=item.owner;card.style.setProperty('--course-start',item.start);card.style.setProperty('--course-span',item.end-item.start+1);card.style.setProperty('--course-lane',pos.lane);card.style.setProperty('--course-bg',p.bg);card.style.setProperty('--course-line',p.line);card.style.setProperty('--course-text',p.text);card.setAttribute('aria-label',item.name+'，'+item.room+'，第'+item.start+'到'+item.end+'节，'+weekText(item.weeks));var owner=state.view==='merged'?'<span class="course-owner">'+VIEW_SHORT[item.owner]+'</span>':'';var weeks=state.scope==='all'?weekText(item.weeks):'第'+w+'周';card.innerHTML='<span class="course-card-top">'+owner+'<span class="course-week">'+weeks+'</span></span><strong>'+item.name+'</strong><span class="course-code">'+item.code+'</span><span class="course-meta"><span>'+item.room+'</span><span>'+item.teacher+'</span></span>';body.appendChild(card)});frag.appendChild(body)}
+        grid.replaceChildren(frag);$('#emptyState').hidden=items.length>0
+      }
+      function renderLegend(){var items;if(state.view==='merged'){items=[['祺的课程','#0F55A9'],['琳的课程','#A474F2'],['同一时段自动并列','#5B6CEB']]}else{items=[[VIEW_LABELS[state.view]+' · 多色课程','#5B6CEB']];var seen={};visibleEvents().forEach(function(item){var key=courseColorKey(item);if(!seen[key]){var p=CARD_PALETTE[key]||CARD_PALETTE.blue;items.push([item.name,p.line]);seen[key]=true}})}$('#legend').innerHTML=items.map(function(x){return'<span class="legend-item"><i class="legend-swatch" style="--legend-color:'+x[1]+'"></i>'+x[0]+'</span>'}).join('')}
+      function render(){renderControls();renderHeader();renderStats();renderCalendar();renderLegend();try{localStorage.setItem('course-schedule-view',state.view);localStorage.setItem('course-schedule-scope',state.scope);localStorage.setItem('course-schedule-week',String(state.week))}catch(e){}}
+      function openCourse(id,owner){var item=schedules[owner].find(function(x){return x.id===id});if(!item)return;var w=activeWeek();$('#modalKicker').textContent=VIEW_LABELS[owner]+' · '+item.code;$('#modalTitle').textContent=item.name;$('#modalSubtitle').textContent=state.scope==='all'?'完整学期条目':'第'+w+'周 · '+weekRange(w);var building=item.building==='a'?'A / F · J301室':item.building==='d'?'D / E · J303室':'B / C · J302室及其他';var fields=[['课程代码',item.code],['课程周数',weekText(item.weeks)],['课程节次','第'+item.start+'–'+item.end+'节'],['教室',item.room],['授课教师',item.teacher],['教学楼时间组',building]];$('#modalDetails').innerHTML=fields.map(function(x){return'<div class="detail-item"><span>'+x[0]+'</span><strong title="'+x[1]+'">'+x[1]+'</strong></div>'}).join('');$('#modalTime').innerHTML='<strong>'+building+'</strong><br>第'+item.start+'–'+item.end+'节对应时间为 '+courseTime(item)+'。';$('#modalNote').textContent=item.note||'课程时间依据图1中的教学楼节次表计算。';$('#courseModal').hidden=false;document.body.style.overflow='hidden';$('#modalClose').focus()}
+      function closeCourse(){$('#courseModal').hidden=true;document.body.style.overflow=''}
+      function loadState(){try{var v=localStorage.getItem('course-schedule-view'),s=localStorage.getItem('course-schedule-scope'),w=Number(localStorage.getItem('course-schedule-week'));if(['me','other','merged'].indexOf(v)>=0)state.view=v;if(['all','current','week'].indexOf(s)>=0)state.scope=s;if(Number.isInteger(w)&&w>=1&&w<=TOTAL_WEEKS)state.week=w}catch(e){}}
+      function registerWebMcp(){var mc=document.modelContext;if(!mc||typeof mc.registerTool!=='function')return;var aborter=new AbortController();var setTool={name:'set_course_schedule_view',title:'切换课程表视图',description:'切换课程表显示对象与周次范围，并同步更新页面上的可见课表。',inputSchema:{type:'object',properties:{view:{type:'string',enum:['me','other','merged']},scope:{type:'string',enum:['all','current','week']},week:{type:'integer',minimum:1,maximum:TOTAL_WEEKS}},required:['view','scope'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:false},execute:function(input){if(!input||['me','other','merged'].indexOf(input.view)<0||['all','current','week'].indexOf(input.scope)<0)throw new Error('view 或 scope 参数无效');if(input.scope==='week'&&(!Number.isInteger(input.week)||input.week<1||input.week>TOTAL_WEEKS))throw new Error('指定周数必须是1到16之间的整数');state.view=input.view;state.scope=input.scope;if(input.scope==='week')state.week=input.week;render();return{view:state.view,scope:state.scope,week:activeWeek(),visibleCourseCount:visibleEvents().length}}};var readTool={name:'read_visible_course_schedule',title:'读取当前可见课表',description:'读取页面当前筛选条件下可见的课程安排。',inputSchema:{type:'object',properties:{},additionalProperties:false},annotations:{readOnlyHint:true,untrustedContentHint:false},execute:function(){return{view:state.view,scope:state.scope,week:activeWeek(),courses:visibleEvents().map(function(item){return{owner:item.owner,name:item.name,day:DAY_NAMES[item.day],sections:item.start+'–'+item.end,room:item.room,teacher:item.teacher,weeks:weekText(item.weeks)}})}}};try{Promise.resolve(mc.registerTool(setTool,{signal:aborter.signal})).catch(function(){});Promise.resolve(mc.registerTool(readTool,{signal:aborter.signal})).catch(function(){})}catch(e){aborter.abort()}}
+      document.addEventListener('click',function(e){var v=e.target.closest('[data-view]');if(v){state.view=v.dataset.view;render();return}var s=e.target.closest('[data-scope]');if(s){state.scope=s.dataset.scope;if(state.scope==='current')state.week=currentWeek();render();return}var w=e.target.closest('[data-week]');if(w){state.scope='week';state.week=Number(w.dataset.week);render();return}var c=e.target.closest('[data-course-id]');if(c)openCourse(c.dataset.courseId,c.dataset.courseOwner)});
+      $('#resetWeek').addEventListener('click',function(){state.scope='current';state.week=currentWeek();render()});
+      $('#timeToggle').addEventListener('click',function(){var ref=$('#timeReference');ref.open=!ref.open;ref.scrollIntoView({behavior:'smooth',block:'nearest'})});
+      $('#modalClose').addEventListener('click',closeCourse);$('#courseModal').addEventListener('click',function(e){if(e.target===$('#courseModal'))closeCourse()});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('#courseModal').hidden)closeCourse()});
+      renderTimeTable();loadState();render();registerWebMcp();
+    })();
+  </script>
+</body>
+</html>
