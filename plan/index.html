@@ -30,10 +30,24 @@
   th { background:#eef3f0; font-weight:600; white-space:nowrap; }
   tbody tr:nth-child(even) { background:#fafbfa; }
   strong { color:#12403a; }
-  @media (max-width:600px) {
-    body { padding:10px 8px 40px; font-size:15px; }
-    .wrap { padding:18px 14px 28px; border-radius:6px; }
-    table { min-width:380px; font-size:.88em; }
+  @media (max-width:700px) {
+    body { padding:10px 8px 40px; font-size:15px; line-height:1.7; }
+    .wrap { padding:16px 13px 28px; border-radius:6px; }
+    /* 手机端：表格改为每行一张卡片，避免横向滚动 */
+    .tw { overflow:visible; margin:.8em 0 1em; }
+    table { min-width:0; width:100%; border-collapse:separate; border-spacing:0; font-size:.96em; }
+    thead { display:none; }
+    tbody, tr, td { display:block; width:100%; }
+    tr { border:1px solid var(--line); border-radius:10px; background:#fff;
+         margin:0 0 10px; padding:9px 12px 10px; box-shadow:0 1px 1px rgba(0,0,0,.03); }
+    tbody tr:nth-child(even) { background:#fff; }
+    td { border:0; padding:3px 0; text-align:left; }
+    td::before { content:attr(data-label); display:block; font-size:.75em; color:var(--muted);
+                 font-weight:600; margin:0 0 1px; letter-spacing:.01em; }
+    td:first-child { font-weight:700; color:#12403a; font-size:1.04em; padding:0 0 6px;
+                     border-bottom:1px dashed var(--line); margin-bottom:4px; }
+    td:first-child::before { display:none; }
+    td:empty { display:none; }
   }
   @media print {
     body { background:#fff; padding:0; }
@@ -53,16 +67,16 @@
 <div class="tw"><table>
 <thead><tr><th>项目</th><th>已知 / 假设</th></tr></thead>
 <tbody>
-<tr><td>年龄</td><td>21 岁</td></tr>
-<tr><td>身高</td><td>164 cm</td></tr>
-<tr><td>体重</td><td>约 67 kg</td></tr>
-<tr><td>BMI</td><td>24.9（超重，中国标准 ≥24）</td></tr>
-<tr><td>活动水平</td><td>久坐为主，每周 1–2 次散步/跳操</td></tr>
-<tr><td>睡眠</td><td>约 6 小时，经常熬夜，晚睡早起</td></tr>
-<tr><td>饮食</td><td>以外卖/下馆子为主，住校，每周 2 次咖啡或奶茶</td></tr>
-<tr><td>健康史</td><td>胃炎/反酸/便秘或肠易激；无其他用药</td></tr>
-<tr><td>预算</td><td>偏紧</td></tr>
-<tr><td>支持</td><td>男友可陪同执行</td></tr>
+<tr><td data-label="项目">年龄</td><td data-label="已知 / 假设">21 岁</td></tr>
+<tr><td data-label="项目">身高</td><td data-label="已知 / 假设">164 cm</td></tr>
+<tr><td data-label="项目">体重</td><td data-label="已知 / 假设">约 67 kg</td></tr>
+<tr><td data-label="项目">BMI</td><td data-label="已知 / 假设">24.9（超重，中国标准 ≥24）</td></tr>
+<tr><td data-label="项目">活动水平</td><td data-label="已知 / 假设">久坐为主，每周 1–2 次散步/跳操</td></tr>
+<tr><td data-label="项目">睡眠</td><td data-label="已知 / 假设">约 6 小时，经常熬夜，晚睡早起</td></tr>
+<tr><td data-label="项目">饮食</td><td data-label="已知 / 假设">以外卖/下馆子为主，住校，每周 2 次咖啡或奶茶</td></tr>
+<tr><td data-label="项目">健康史</td><td data-label="已知 / 假设">胃炎/反酸/便秘或肠易激；无其他用药</td></tr>
+<tr><td data-label="项目">预算</td><td data-label="已知 / 假设">偏紧</td></tr>
+<tr><td data-label="项目">支持</td><td data-label="已知 / 假设">男友可陪同执行</td></tr>
 </tbody></table></div>
 <p><strong>热量估算（Mifflin-St Jeor）</strong></p>
 <ul>
@@ -119,12 +133,12 @@
 <div class="tw"><table>
 <thead><tr><th>阶段</th><th>时间</th><th>体重</th><th>BMI</th><th>围度</th><th>体感</th></tr></thead>
 <tbody>
-<tr><td>第 1 个月</td><td>1 个月</td><td>−2.5~3.5 kg（至 63.5–64.5）</td><td>23.6–24.0</td><td>腰围 −3~5 cm</td><td>脸和脚踝浮肿消退，衣服变松</td></tr>
-<tr><td>阶段一</td><td>第 3 个月</td><td>累计 −6 kg 左右（至 61）</td><td>22.7</td><td>腰围 −6~8 cm</td><td>体能明显变好，深蹲次数翻倍</td></tr>
-<tr><td>阶段二</td><td>第 6 个月</td><td>累计 −10 kg 左右（至 57）</td><td>21.2</td><td>维持</td><td>不靠意志力的日常习惯成形</td></tr>
-<tr><td><strong>评估点 A</strong></td><td>第 6–7 个月</td><td>57 kg 时做四项判定（见 2.4）</td><td>21.2</td><td>—</td><td>月经、精力、体脂、训练表现</td></tr>
-<tr><td>阶段三（可选）</td><td>第 9 个月</td><td>55 kg，仅当 A 全项通过</td><td>20.4</td><td>维持</td><td>需要额外抗阻与蛋白保障</td></tr>
-<tr><td>维持</td><td>第 12 个月</td><td>稳定在 55–58 kg 区间</td><td>20.4–21.6</td><td>维持</td><td>不反弹，指标改善</td></tr>
+<tr><td data-label="阶段">第 1 个月</td><td data-label="时间">1 个月</td><td data-label="体重">−2.5~3.5 kg（至 63.5–64.5）</td><td data-label="BMI">23.6–24.0</td><td data-label="围度">腰围 −3~5 cm</td><td data-label="体感">脸和脚踝浮肿消退，衣服变松</td></tr>
+<tr><td data-label="阶段">阶段一</td><td data-label="时间">第 3 个月</td><td data-label="体重">累计 −6 kg 左右（至 61）</td><td data-label="BMI">22.7</td><td data-label="围度">腰围 −6~8 cm</td><td data-label="体感">体能明显变好，深蹲次数翻倍</td></tr>
+<tr><td data-label="阶段">阶段二</td><td data-label="时间">第 6 个月</td><td data-label="体重">累计 −10 kg 左右（至 57）</td><td data-label="BMI">21.2</td><td data-label="围度">维持</td><td data-label="体感">不靠意志力的日常习惯成形</td></tr>
+<tr><td data-label="阶段"><strong>评估点 A</strong></td><td data-label="时间">第 6–7 个月</td><td data-label="体重">57 kg 时做四项判定（见 2.4）</td><td data-label="BMI">21.2</td><td data-label="围度">—</td><td data-label="体感">月经、精力、体脂、训练表现</td></tr>
+<tr><td data-label="阶段">阶段三（可选）</td><td data-label="时间">第 9 个月</td><td data-label="体重">55 kg，仅当 A 全项通过</td><td data-label="BMI">20.4</td><td data-label="围度">维持</td><td data-label="体感">需要额外抗阻与蛋白保障</td></tr>
+<tr><td data-label="阶段">维持</td><td data-label="时间">第 12 个月</td><td data-label="体重">稳定在 55–58 kg 区间</td><td data-label="BMI">20.4–21.6</td><td data-label="围度">维持</td><td data-label="体感">不反弹，指标改善</td></tr>
 </tbody></table></div>
 <blockquote><strong>50 kg（100 斤）不在上表的时间轴上。</strong> 它是一个需要单独评估的选项，理由见 2.4。</blockquote>
 <h3>2.2 体成分目标（比体重更重要）</h3>
@@ -194,13 +208,13 @@
 <div class="tw"><table>
 <thead><tr><th>项目</th><th>目标</th><th>折算成&quot;份&quot;</th></tr></thead>
 <tbody>
-<tr><td>总热量</td><td>1500–1600 kcal</td><td>—</td></tr>
-<tr><td>蛋白质</td><td>100–110 g</td><td>蛋白 14 份左右（1 份≈7 g）</td></tr>
-<tr><td>主食</td><td>相当于米饭 400–500 g（熟）</td><td>主食 5–6 份</td></tr>
-<tr><td>蔬菜</td><td>400–500 g</td><td>蔬菜 3 份</td></tr>
-<tr><td>水果</td><td>200–300 g</td><td>水果 2 份</td></tr>
-<tr><td>脂肪</td><td>40–50 g（含烹调用油）</td><td>脂肪 3 份</td></tr>
-<tr><td>饮水</td><td>1700–2000 ml</td><td>—</td></tr>
+<tr><td data-label="项目">总热量</td><td data-label="目标">1500–1600 kcal</td><td data-label="折算成&quot;份&quot;">—</td></tr>
+<tr><td data-label="项目">蛋白质</td><td data-label="目标">100–110 g</td><td data-label="折算成&quot;份&quot;">蛋白 14 份左右（1 份≈7 g）</td></tr>
+<tr><td data-label="项目">主食</td><td data-label="目标">相当于米饭 400–500 g（熟）</td><td data-label="折算成&quot;份&quot;">主食 5–6 份</td></tr>
+<tr><td data-label="项目">蔬菜</td><td data-label="目标">400–500 g</td><td data-label="折算成&quot;份&quot;">蔬菜 3 份</td></tr>
+<tr><td data-label="项目">水果</td><td data-label="目标">200–300 g</td><td data-label="折算成&quot;份&quot;">水果 2 份</td></tr>
+<tr><td data-label="项目">脂肪</td><td data-label="目标">40–50 g（含烹调用油）</td><td data-label="折算成&quot;份&quot;">脂肪 3 份</td></tr>
+<tr><td data-label="项目">饮水</td><td data-label="目标">1700–2000 ml</td><td data-label="折算成&quot;份&quot;">—</td></tr>
 </tbody></table></div>
 <blockquote>这一格是给&quot;想核对的人&quot;看的。<strong>她不需要背这些数字</strong>，只需要记住下面四条规则。</blockquote>
 <h3>4.2 她只需要记住的四条规则</h3>
@@ -215,24 +229,24 @@
 <div class="tw"><table>
 <thead><tr><th>单位</th><th>大概是多少</th><th>对应食物</th><th>每天几次</th></tr></thead>
 <tbody>
-<tr><td>一掌心</td><td>手掌大小、厚度约小指</td><td>肉/鱼/虾 约 100 g</td><td>3–4 次</td></tr>
-<tr><td>一拳头</td><td>自己的拳头</td><td>米饭 100–150 g（熟，食堂半份约 100 g）、面条 1 碗、红薯 1 个</td><td>3 次</td></tr>
-<tr><td>两拳头</td><td>双手捧起来</td><td>蔬菜 300–400 g</td><td>2–3 次</td></tr>
-<tr><td>一拇指</td><td>拇指尖大小</td><td>油 10 g、花生酱 1 勺</td><td>全天合计</td></tr>
-<tr><td>一捧</td><td>双手合拢</td><td>水果 200 g、坚果 10 g</td><td>水果 2 次、坚果 1 次</td></tr>
+<tr><td data-label="单位">一掌心</td><td data-label="大概是多少">手掌大小、厚度约小指</td><td data-label="对应食物">肉/鱼/虾 约 100 g</td><td data-label="每天几次">3–4 次</td></tr>
+<tr><td data-label="单位">一拳头</td><td data-label="大概是多少">自己的拳头</td><td data-label="对应食物">米饭 100–150 g（熟，食堂半份约 100 g）、面条 1 碗、红薯 1 个</td><td data-label="每天几次">3 次</td></tr>
+<tr><td data-label="单位">两拳头</td><td data-label="大概是多少">双手捧起来</td><td data-label="对应食物">蔬菜 300–400 g</td><td data-label="每天几次">2–3 次</td></tr>
+<tr><td data-label="单位">一拇指</td><td data-label="大概是多少">拇指尖大小</td><td data-label="对应食物">油 10 g、花生酱 1 勺</td><td data-label="每天几次">全天合计</td></tr>
+<tr><td data-label="单位">一捧</td><td data-label="大概是多少">双手合拢</td><td data-label="对应食物">水果 200 g、坚果 10 g</td><td data-label="每天几次">水果 2 次、坚果 1 次</td></tr>
 </tbody></table></div>
 <p><strong>餐盘法</strong>（打菜时用，比记数字快）：把餐盘想象成四格——<strong>一半放蔬菜，四分之一放蛋白，四分之一放主食</strong>。食堂的餐盘本来就是分格的，照着摆就行。</p>
 <h3>4.4 食堂怎么打（口令版）</h3>
 <div class="tw"><table>
 <thead><tr><th>窗口</th><th>怎么点</th><th>避雷</th></tr></thead>
 <tbody>
-<tr><td>打饭窗口</td><td>&quot;米饭半份&quot; + 一荤两素</td><td>别要浇汁、别让师傅多打饭</td></tr>
-<tr><td>荤菜</td><td>蒸、煮、白切、卤、清炒 优先</td><td>干锅、水煮、红烧、糖醋、油炸</td></tr>
-<tr><td>素菜</td><td>清炒、凉拌、白灼</td><td>地三鲜、干煸豆角、油焖茄子（都过油）</td></tr>
-<tr><td>汤</td><td>紫菜蛋花汤、番茄蛋汤</td><td>排骨汤、奶油浓汤、免费例汤（盐最多）</td></tr>
-<tr><td>早餐</td><td>鸡蛋 2 个 + 豆浆/牛奶 + 玉米或包子</td><td>油条、煎饼果子加脆饼、甜豆浆</td></tr>
-<tr><td>面食</td><td>牛肉面加蛋加菜，面吃 2/3，汤不喝</td><td>红油、卤汁拌面、大排面</td></tr>
-<tr><td>麻辣烫/砂锅</td><td>清汤，多绿叶菜 + 菌菇 + 豆腐 + 瘦肉/虾，不喝汤</td><td>丸子、油豆腐、方便面、麻酱碟</td></tr>
+<tr><td data-label="窗口">打饭窗口</td><td data-label="怎么点">&quot;米饭半份&quot; + 一荤两素</td><td data-label="避雷">别要浇汁、别让师傅多打饭</td></tr>
+<tr><td data-label="窗口">荤菜</td><td data-label="怎么点">蒸、煮、白切、卤、清炒 优先</td><td data-label="避雷">干锅、水煮、红烧、糖醋、油炸</td></tr>
+<tr><td data-label="窗口">素菜</td><td data-label="怎么点">清炒、凉拌、白灼</td><td data-label="避雷">地三鲜、干煸豆角、油焖茄子（都过油）</td></tr>
+<tr><td data-label="窗口">汤</td><td data-label="怎么点">紫菜蛋花汤、番茄蛋汤</td><td data-label="避雷">排骨汤、奶油浓汤、免费例汤（盐最多）</td></tr>
+<tr><td data-label="窗口">早餐</td><td data-label="怎么点">鸡蛋 2 个 + 豆浆/牛奶 + 玉米或包子</td><td data-label="避雷">油条、煎饼果子加脆饼、甜豆浆</td></tr>
+<tr><td data-label="窗口">面食</td><td data-label="怎么点">牛肉面加蛋加菜，面吃 2/3，汤不喝</td><td data-label="避雷">红油、卤汁拌面、大排面</td></tr>
+<tr><td data-label="窗口">麻辣烫/砂锅</td><td data-label="怎么点">清汤，多绿叶菜 + 菌菇 + 豆腐 + 瘦肉/虾，不喝汤</td><td data-label="避雷">丸子、油豆腐、方便面、麻酱碟</td></tr>
 </tbody></table></div>
 <p><strong>打菜口诀（背着说）</strong>：</p>
 <blockquote>&quot;米饭半份，菜少油，多给点青菜，不要浇汁。&quot;</blockquote>
@@ -242,35 +256,35 @@
 <div class="tw"><table>
 <thead><tr><th>品类</th><th>怎么点</th><th>一句话备注</th></tr></thead>
 <tbody>
-<tr><td>中式快餐</td><td>一荤两素，荤选蒸/白切/卤</td><td>米饭半份，菜少油</td></tr>
-<tr><td>黄焖鸡/焖锅</td><td>去皮、少汁、加青菜</td><td>不要汤汁拌饭</td></tr>
-<tr><td>麻辣烫</td><td>清汤，多菜 + 豆腐 + 瘦肉/虾滑</td><td>不喝汤，不要丸子和面</td></tr>
-<tr><td>轻食沙拉</td><td>鸡胸/牛肉/虾，酱另放用一半</td><td>酱分开放</td></tr>
-<tr><td>面/粉</td><td>清汤，加蛋加菜，面吃 2/3</td><td>汤不喝</td></tr>
-<tr><td>日料</td><td>刺身、烤鱼、烤鸡串</td><td>不要天妇罗和卷寿司</td></tr>
-<tr><td>火锅</td><td>清汤锅，涮肉 + 菜，蘸料用醋 + 蒜</td><td>不要麻酱和油碟</td></tr>
+<tr><td data-label="品类">中式快餐</td><td data-label="怎么点">一荤两素，荤选蒸/白切/卤</td><td data-label="一句话备注">米饭半份，菜少油</td></tr>
+<tr><td data-label="品类">黄焖鸡/焖锅</td><td data-label="怎么点">去皮、少汁、加青菜</td><td data-label="一句话备注">不要汤汁拌饭</td></tr>
+<tr><td data-label="品类">麻辣烫</td><td data-label="怎么点">清汤，多菜 + 豆腐 + 瘦肉/虾滑</td><td data-label="一句话备注">不喝汤，不要丸子和面</td></tr>
+<tr><td data-label="品类">轻食沙拉</td><td data-label="怎么点">鸡胸/牛肉/虾，酱另放用一半</td><td data-label="一句话备注">酱分开放</td></tr>
+<tr><td data-label="品类">面/粉</td><td data-label="怎么点">清汤，加蛋加菜，面吃 2/3</td><td data-label="一句话备注">汤不喝</td></tr>
+<tr><td data-label="品类">日料</td><td data-label="怎么点">刺身、烤鱼、烤鸡串</td><td data-label="一句话备注">不要天妇罗和卷寿司</td></tr>
+<tr><td data-label="品类">火锅</td><td data-label="怎么点">清汤锅，涮肉 + 菜，蘸料用醋 + 蒜</td><td data-label="一句话备注">不要麻酱和油碟</td></tr>
 </tbody></table></div>
 <p><strong>判断一家店能不能点</strong>：菜单里有&quot;蒸/煮/烤/白灼&quot;字样、能备注少油、有单独一份青菜。三个里有两个就下单。</p>
 <h3>4.6 一周轮转表（照着吃，不用算）</h3>
 <div class="tw"><table>
 <thead><tr><th>日</th><th>早</th><th>午</th><th>晚</th><th>加餐</th></tr></thead>
 <tbody>
-<tr><td>一</td><td>鸡蛋 2 个 + 牛奶 + 全麦面包 2 片</td><td>米饭半份 + 清蒸鱼 + 蒜蓉西兰花</td><td>鸡胸炒青椒 + 米饭半份 + 凉拌黄瓜</td><td>苹果 + 无糖酸奶</td></tr>
-<tr><td>二</td><td>燕麦一拳头 + 牛奶 + 鸡蛋 2 个</td><td>米饭半份 + 黄焖鸡（去皮少汁）+ 清炒青菜</td><td>番茄豆腐汤 + 米饭半份 + 时蔬</td><td>橙子 + 即食鸡胸 1 包</td></tr>
-<tr><td>三</td><td>全麦面包 2 片 + 鸡蛋 2 个 + 无糖豆浆</td><td>清汤麻辣烫（多菜 + 虾 + 豆腐）+ 米饭半份</td><td>去皮鸡腿 + 西兰花 + 米饭半份</td><td>苹果 + 牛奶</td></tr>
-<tr><td>四</td><td>鸡蛋 2 个 + 牛奶 + 玉米 1 根</td><td>牛肉面加蛋加菜（面吃 2/3，不喝汤）</td><td>白灼虾 + 炒青菜 + 米饭半份</td><td>酸奶 + 香蕉</td></tr>
-<tr><td>五</td><td>燕麦一拳头 + 牛奶 + 鸡蛋 1 个</td><td>轻食（糙米饭 + 鸡腿 + 蔬菜，酱一半）</td><td>番茄炒蛋 + 米饭半份 + 青菜 + 鸡胸</td><td>酸奶 + 坚果一小把</td></tr>
-<tr><td>六</td><td>鸡蛋 3 个 + 牛奶 + 面包 1 片</td><td>外食（按 4.9 四步法点）</td><td>番茄龙利鱼 + 米饭半份 + 青菜</td><td>水果 + 酸奶</td></tr>
-<tr><td>日</td><td>豆浆 + 鸡蛋 2 个 + 玉米 + 牛奶</td><td>米饭半份 + 番茄炒蛋 + 卤鸡腿（去皮）+ 时蔬</td><td>虾仁滑蛋 + 米饭半份 + 青菜</td><td>苹果 + 坚果</td></tr>
+<tr><td data-label="日">一</td><td data-label="早">鸡蛋 2 个 + 牛奶 + 全麦面包 2 片</td><td data-label="午">米饭半份 + 清蒸鱼 + 蒜蓉西兰花</td><td data-label="晚">鸡胸炒青椒 + 米饭半份 + 凉拌黄瓜</td><td data-label="加餐">苹果 + 无糖酸奶</td></tr>
+<tr><td data-label="日">二</td><td data-label="早">燕麦一拳头 + 牛奶 + 鸡蛋 2 个</td><td data-label="午">米饭半份 + 黄焖鸡（去皮少汁）+ 清炒青菜</td><td data-label="晚">番茄豆腐汤 + 米饭半份 + 时蔬</td><td data-label="加餐">橙子 + 即食鸡胸 1 包</td></tr>
+<tr><td data-label="日">三</td><td data-label="早">全麦面包 2 片 + 鸡蛋 2 个 + 无糖豆浆</td><td data-label="午">清汤麻辣烫（多菜 + 虾 + 豆腐）+ 米饭半份</td><td data-label="晚">去皮鸡腿 + 西兰花 + 米饭半份</td><td data-label="加餐">苹果 + 牛奶</td></tr>
+<tr><td data-label="日">四</td><td data-label="早">鸡蛋 2 个 + 牛奶 + 玉米 1 根</td><td data-label="午">牛肉面加蛋加菜（面吃 2/3，不喝汤）</td><td data-label="晚">白灼虾 + 炒青菜 + 米饭半份</td><td data-label="加餐">酸奶 + 香蕉</td></tr>
+<tr><td data-label="日">五</td><td data-label="早">燕麦一拳头 + 牛奶 + 鸡蛋 1 个</td><td data-label="午">轻食（糙米饭 + 鸡腿 + 蔬菜，酱一半）</td><td data-label="晚">番茄炒蛋 + 米饭半份 + 青菜 + 鸡胸</td><td data-label="加餐">酸奶 + 坚果一小把</td></tr>
+<tr><td data-label="日">六</td><td data-label="早">鸡蛋 3 个 + 牛奶 + 面包 1 片</td><td data-label="午">外食（按 4.9 四步法点）</td><td data-label="晚">番茄龙利鱼 + 米饭半份 + 青菜</td><td data-label="加餐">水果 + 酸奶</td></tr>
+<tr><td data-label="日">日</td><td data-label="早">豆浆 + 鸡蛋 2 个 + 玉米 + 牛奶</td><td data-label="午">米饭半份 + 番茄炒蛋 + 卤鸡腿（去皮）+ 时蔬</td><td data-label="晚">虾仁滑蛋 + 米饭半份 + 青菜</td><td data-label="加餐">苹果 + 坚果</td></tr>
 </tbody></table></div>
 <p><strong>用法</strong>：不用严格对号入座，只要每天满足&quot;早中晚各有一掌心蛋白 + 两顿有蔬菜 + 主食半份&quot;这个骨架，吃什么可以自由替换（替换规则见 4.12）。</p>
 <h3>4.7 没食堂也没外卖时（便利店/超市组合）</h3>
 <div class="tw"><table>
 <thead><tr><th>组合</th><th>内容</th><th>大概</th></tr></thead>
 <tbody>
-<tr><td>A</td><td>茶叶蛋 2 个 + 无糖豆浆 1 瓶 + 全麦面包 1 袋</td><td>蛋白 24 g</td></tr>
-<tr><td>B</td><td>关东煮（萝卜、海带、豆腐、鸡蛋，共 5 串，不喝汤）+ 饭团 1 个</td><td>蛋白 20 g</td></tr>
-<tr><td>C</td><td>即食鸡胸 1 包 + 无糖酸奶 1 杯 + 玉米 1 根 + 圣女果</td><td>蛋白 32 g</td></tr>
+<tr><td data-label="组合">A</td><td data-label="内容">茶叶蛋 2 个 + 无糖豆浆 1 瓶 + 全麦面包 1 袋</td><td data-label="大概">蛋白 24 g</td></tr>
+<tr><td data-label="组合">B</td><td data-label="内容">关东煮（萝卜、海带、豆腐、鸡蛋，共 5 串，不喝汤）+ 饭团 1 个</td><td data-label="大概">蛋白 20 g</td></tr>
+<tr><td data-label="组合">C</td><td data-label="内容">即食鸡胸 1 包 + 无糖酸奶 1 杯 + 玉米 1 根 + 圣女果</td><td data-label="大概">蛋白 32 g</td></tr>
 </tbody></table></div>
 <p>便利店避雷：饭团选鸡肉/三文鱼，不选沙拉酱金枪鱼；关东煮不选丸子和油豆腐；咖啡只选美式。</p>
 <p><strong>如果她有小电煮锅</strong>（非必需），三个 10 分钟组合：番茄龙利鱼（番茄 1 个 + 鱼片，煮 8 分钟）、一锅蒸（鸡胸 + 西兰花 + 红薯，同锅 12 分钟）、豆腐虾仁汤（6 分钟）。没锅就跳过，不影响方案成立。</p>
@@ -278,10 +292,10 @@
 <div class="tw"><table>
 <thead><tr><th>原来</th><th>改成</th><th>省下</th></tr></thead>
 <tbody>
-<tr><td>全糖奶茶 500 ml</td><td>三分糖去奶盖 / 纯茶 / 美式</td><td>200–350 kcal</td></tr>
-<tr><td>拿铁加糖</td><td>拿铁不加糖（脱脂或燕麦奶）</td><td>80–120 kcal</td></tr>
-<tr><td>果汁</td><td>整个水果</td><td>60–100 kcal</td></tr>
-<tr><td>可乐</td><td>无糖气泡水</td><td>140 kcal</td></tr>
+<tr><td data-label="原来">全糖奶茶 500 ml</td><td data-label="改成">三分糖去奶盖 / 纯茶 / 美式</td><td data-label="省下">200–350 kcal</td></tr>
+<tr><td data-label="原来">拿铁加糖</td><td data-label="改成">拿铁不加糖（脱脂或燕麦奶）</td><td data-label="省下">80–120 kcal</td></tr>
+<tr><td data-label="原来">果汁</td><td data-label="改成">整个水果</td><td data-label="省下">60–100 kcal</td></tr>
+<tr><td data-label="原来">可乐</td><td data-label="改成">无糖气泡水</td><td data-label="省下">140 kcal</td></tr>
 </tbody></table></div>
 <p><strong>两条纪律</strong>：咖啡不空腹喝（放餐后，她有反酸）；下午 2 点后不摄入咖啡因（半衰期 5–6 小时，直接毁睡眠）。代糖饮料适量即可，赤藓糖醇、山梨糖醇在肠易激人群里容易胀气。</p>
 <h3>4.9 聚餐四步法</h3>
@@ -296,22 +310,22 @@
 <div class="tw"><table>
 <thead><tr><th>问题</th><th>做法</th></tr></thead>
 <tbody>
-<tr><td>反酸</td><td>三餐规律、间隔不超过 5 小时；晚餐睡前 3 小时；咖啡随餐；少油炸少辣</td></tr>
-<tr><td>便秘</td><td>水 1700–2000 ml；燕麦、苹果、火龙果；每天走动；蔬菜两周内渐进增加</td></tr>
-<tr><td>腹胀/肠易激</td><td>记录 2 周饮食与症状，排查触发物（奶茶的乳糖、洋葱、蒜、豆类、代糖）</td></tr>
-<tr><td>胃炎</td><td>不空腹吃水果和咖啡；不过饱；细嚼慢咽</td></tr>
+<tr><td data-label="问题">反酸</td><td data-label="做法">三餐规律、间隔不超过 5 小时；晚餐睡前 3 小时；咖啡随餐；少油炸少辣</td></tr>
+<tr><td data-label="问题">便秘</td><td data-label="做法">水 1700–2000 ml；燕麦、苹果、火龙果；每天走动；蔬菜两周内渐进增加</td></tr>
+<tr><td data-label="问题">腹胀/肠易激</td><td data-label="做法">记录 2 周饮食与症状，排查触发物（奶茶的乳糖、洋葱、蒜、豆类、代糖）</td></tr>
+<tr><td data-label="问题">胃炎</td><td data-label="做法">不空腹吃水果和咖啡；不过饱；细嚼慢咽</td></tr>
 </tbody></table></div>
 <p>蔬菜一定要&quot;渐进&quot;。一周内从 100 g 跳到 500 g，腹胀会让她以为方案有问题，然后放弃。</p>
 <h3>4.11 预算</h3>
 <div class="tw"><table>
 <thead><tr><th>项目</th><th>日均</th></tr></thead>
 <tbody>
-<tr><td>早餐（鸡蛋 + 牛奶/豆浆 + 主食）</td><td>7–9 元</td></tr>
-<tr><td>午餐（食堂一荤两素 + 半份饭）</td><td>12–15 元</td></tr>
-<tr><td>晚餐（同上，或外卖简餐）</td><td>12–18 元</td></tr>
-<tr><td>加餐（酸奶/水果/坚果）</td><td>6–9 元</td></tr>
-<tr><td>每周 2 次咖啡奶茶</td><td>摊到每天 4–6 元</td></tr>
-<tr><td><strong>合计</strong></td><td><strong>约 40–55 元/天，1200–1600 元/月</strong></td></tr>
+<tr><td data-label="项目">早餐（鸡蛋 + 牛奶/豆浆 + 主食）</td><td data-label="日均">7–9 元</td></tr>
+<tr><td data-label="项目">午餐（食堂一荤两素 + 半份饭）</td><td data-label="日均">12–15 元</td></tr>
+<tr><td data-label="项目">晚餐（同上，或外卖简餐）</td><td data-label="日均">12–18 元</td></tr>
+<tr><td data-label="项目">加餐（酸奶/水果/坚果）</td><td data-label="日均">6–9 元</td></tr>
+<tr><td data-label="项目">每周 2 次咖啡奶茶</td><td data-label="日均">摊到每天 4–6 元</td></tr>
+<tr><td data-label="项目"><strong>合计</strong></td><td data-label="日均"><strong>约 40–55 元/天，1200–1600 元/月</strong></td></tr>
 </tbody></table></div>
 <p>比旧模式（外卖 25–35 一餐 + 奶茶）省。一次性投入只有弹力带 20–30 元，不需要蛋白粉、代餐、任何保健品。</p>
 <h3>4.12 附录：想核对的时候用</h3>
@@ -319,37 +333,37 @@
 <div class="tw"><table>
 <thead><tr><th>食物</th><th>一份</th><th>热量</th><th>蛋白</th></tr></thead>
 <tbody>
-<tr><td>鸡蛋</td><td>1 个（50 g）</td><td>72</td><td>6.5</td></tr>
-<tr><td>牛奶</td><td>250 ml</td><td>135</td><td>8</td></tr>
-<tr><td>无糖豆浆</td><td>300 ml</td><td>45</td><td>4.5</td></tr>
-<tr><td>米饭（熟）</td><td>150 g</td><td>174</td><td>4</td></tr>
-<tr><td>全麦面包</td><td>2 片（70 g）</td><td>175</td><td>7</td></tr>
-<tr><td>燕麦（干）</td><td>40 g</td><td>150</td><td>5</td></tr>
-<tr><td>鸡胸</td><td>100 g</td><td>133</td><td>24</td></tr>
-<tr><td>鱼</td><td>150 g</td><td>158</td><td>27</td></tr>
-<tr><td>虾</td><td>100 g</td><td>93</td><td>18</td></tr>
-<tr><td>瘦牛肉</td><td>100 g</td><td>125</td><td>20</td></tr>
-<tr><td>北豆腐</td><td>150 g</td><td>174</td><td>18</td></tr>
-<tr><td>无糖酸奶</td><td>150 g</td><td>90</td><td>5</td></tr>
-<tr><td>苹果</td><td>200 g</td><td>104</td><td>0.5</td></tr>
-<tr><td>坚果</td><td>10 g</td><td>60</td><td>2</td></tr>
+<tr><td data-label="食物">鸡蛋</td><td data-label="一份">1 个（50 g）</td><td data-label="热量">72</td><td data-label="蛋白">6.5</td></tr>
+<tr><td data-label="食物">牛奶</td><td data-label="一份">250 ml</td><td data-label="热量">135</td><td data-label="蛋白">8</td></tr>
+<tr><td data-label="食物">无糖豆浆</td><td data-label="一份">300 ml</td><td data-label="热量">45</td><td data-label="蛋白">4.5</td></tr>
+<tr><td data-label="食物">米饭（熟）</td><td data-label="一份">150 g</td><td data-label="热量">174</td><td data-label="蛋白">4</td></tr>
+<tr><td data-label="食物">全麦面包</td><td data-label="一份">2 片（70 g）</td><td data-label="热量">175</td><td data-label="蛋白">7</td></tr>
+<tr><td data-label="食物">燕麦（干）</td><td data-label="一份">40 g</td><td data-label="热量">150</td><td data-label="蛋白">5</td></tr>
+<tr><td data-label="食物">鸡胸</td><td data-label="一份">100 g</td><td data-label="热量">133</td><td data-label="蛋白">24</td></tr>
+<tr><td data-label="食物">鱼</td><td data-label="一份">150 g</td><td data-label="热量">158</td><td data-label="蛋白">27</td></tr>
+<tr><td data-label="食物">虾</td><td data-label="一份">100 g</td><td data-label="热量">93</td><td data-label="蛋白">18</td></tr>
+<tr><td data-label="食物">瘦牛肉</td><td data-label="一份">100 g</td><td data-label="热量">125</td><td data-label="蛋白">20</td></tr>
+<tr><td data-label="食物">北豆腐</td><td data-label="一份">150 g</td><td data-label="热量">174</td><td data-label="蛋白">18</td></tr>
+<tr><td data-label="食物">无糖酸奶</td><td data-label="一份">150 g</td><td data-label="热量">90</td><td data-label="蛋白">5</td></tr>
+<tr><td data-label="食物">苹果</td><td data-label="一份">200 g</td><td data-label="热量">104</td><td data-label="蛋白">0.5</td></tr>
+<tr><td data-label="食物">坚果</td><td data-label="一份">10 g</td><td data-label="热量">60</td><td data-label="蛋白">2</td></tr>
 </tbody></table></div>
 <p><strong>常见外卖热量（估算）</strong></p>
 <div class="tw"><table>
 <thead><tr><th>食物</th><th>热量</th></tr></thead>
 <tbody>
-<tr><td>兰州牛肉面 1 碗</td><td>550–650</td></tr>
-<tr><td>黄焖鸡米饭（含饭）</td><td>800–1000</td></tr>
-<tr><td>清汤麻辣烫（多菜少丸）</td><td>400–600</td></tr>
-<tr><td>麻辣烫（麻酱 + 丸子 + 面）</td><td>900–1200</td></tr>
-<tr><td>蛋炒饭</td><td>700–850</td></tr>
-<tr><td>盖浇饭</td><td>750–900</td></tr>
-<tr><td>汉堡套餐</td><td>900–1100</td></tr>
-<tr><td>全糖奶茶 500 ml</td><td>400–500</td></tr>
-<tr><td>三分糖奶茶</td><td>300–380</td></tr>
-<tr><td>水饺 12 个</td><td>500</td></tr>
-<tr><td>螺蛳粉</td><td>600–800</td></tr>
-<tr><td>煎饼果子</td><td>500–600</td></tr>
+<tr><td data-label="食物">兰州牛肉面 1 碗</td><td data-label="热量">550–650</td></tr>
+<tr><td data-label="食物">黄焖鸡米饭（含饭）</td><td data-label="热量">800–1000</td></tr>
+<tr><td data-label="食物">清汤麻辣烫（多菜少丸）</td><td data-label="热量">400–600</td></tr>
+<tr><td data-label="食物">麻辣烫（麻酱 + 丸子 + 面）</td><td data-label="热量">900–1200</td></tr>
+<tr><td data-label="食物">蛋炒饭</td><td data-label="热量">700–850</td></tr>
+<tr><td data-label="食物">盖浇饭</td><td data-label="热量">750–900</td></tr>
+<tr><td data-label="食物">汉堡套餐</td><td data-label="热量">900–1100</td></tr>
+<tr><td data-label="食物">全糖奶茶 500 ml</td><td data-label="热量">400–500</td></tr>
+<tr><td data-label="食物">三分糖奶茶</td><td data-label="热量">300–380</td></tr>
+<tr><td data-label="食物">水饺 12 个</td><td data-label="热量">500</td></tr>
+<tr><td data-label="食物">螺蛳粉</td><td data-label="热量">600–800</td></tr>
+<tr><td data-label="食物">煎饼果子</td><td data-label="热量">500–600</td></tr>
 </tbody></table></div>
 <p><strong>替换规则（同类换同类，热量差不多）</strong></p>
 <ul>
@@ -362,11 +376,11 @@
 <div class="tw"><table>
 <thead><tr><th>想吃</th><th>换成</th><th>大概省</th></tr></thead>
 <tbody>
-<tr><td>炸鸡</td><td>烤鸡腿（去皮）</td><td>150–200 kcal</td></tr>
-<tr><td>奶茶</td><td>无糖拿铁 / 纯茶</td><td>150–300 kcal</td></tr>
-<tr><td>薯片</td><td>无糖酸奶 + 水果</td><td>100–150 kcal</td></tr>
-<tr><td>泡面</td><td>清汤面 + 蛋 + 菜</td><td>100 kcal，且蛋白更高</td></tr>
-<tr><td>蛋糕</td><td>黑巧 2 小块 / 水果</td><td>150 kcal</td></tr>
+<tr><td data-label="想吃">炸鸡</td><td data-label="换成">烤鸡腿（去皮）</td><td data-label="大概省">150–200 kcal</td></tr>
+<tr><td data-label="想吃">奶茶</td><td data-label="换成">无糖拿铁 / 纯茶</td><td data-label="大概省">150–300 kcal</td></tr>
+<tr><td data-label="想吃">薯片</td><td data-label="换成">无糖酸奶 + 水果</td><td data-label="大概省">100–150 kcal</td></tr>
+<tr><td data-label="想吃">泡面</td><td data-label="换成">清汤面 + 蛋 + 菜</td><td data-label="大概省">100 kcal，且蛋白更高</td></tr>
+<tr><td data-label="想吃">蛋糕</td><td data-label="换成">黑巧 2 小块 / 水果</td><td data-label="大概省">150 kcal</td></tr>
 </tbody></table></div>
 <blockquote>只有在连续 3 周体重不动时，才需要把某一周的三餐按克称一遍核对。日常按手掌估就够。</blockquote>
 <h2>5. 运动方案</h2>
@@ -376,14 +390,14 @@
 <div class="tw"><table>
 <thead><tr><th>时间</th><th>内容</th><th>时长</th></tr></thead>
 <tbody>
-<tr><td>周一</td><td>抗阻 A（下肢 + 核心）</td><td>25 min</td></tr>
-<tr><td>周二</td><td>快走或跳操</td><td>30 min</td></tr>
-<tr><td>周三</td><td>抗阻 B（上肢 + 核心）</td><td>25 min</td></tr>
-<tr><td>周四</td><td>快走或跳操</td><td>30 min</td></tr>
-<tr><td>周五</td><td>抗阻 C（全身循环）</td><td>25 min</td></tr>
-<tr><td>周六</td><td>自由活动（逛街、爬楼梯都算）</td><td>—</td></tr>
-<tr><td>周日</td><td>休息或拉伸</td><td>15 min</td></tr>
-<tr><td>每天</td><td>7000–8000 步</td><td>全天累计</td></tr>
+<tr><td data-label="时间">周一</td><td data-label="内容">抗阻 A（下肢 + 核心）</td><td data-label="时长">25 min</td></tr>
+<tr><td data-label="时间">周二</td><td data-label="内容">快走或跳操</td><td data-label="时长">30 min</td></tr>
+<tr><td data-label="时间">周三</td><td data-label="内容">抗阻 B（上肢 + 核心）</td><td data-label="时长">25 min</td></tr>
+<tr><td data-label="时间">周四</td><td data-label="内容">快走或跳操</td><td data-label="时长">30 min</td></tr>
+<tr><td data-label="时间">周五</td><td data-label="内容">抗阻 C（全身循环）</td><td data-label="时长">25 min</td></tr>
+<tr><td data-label="时间">周六</td><td data-label="内容">自由活动（逛街、爬楼梯都算）</td><td data-label="时长">—</td></tr>
+<tr><td data-label="时间">周日</td><td data-label="内容">休息或拉伸</td><td data-label="时长">15 min</td></tr>
+<tr><td data-label="时间">每天</td><td data-label="内容">7000–8000 步</td><td data-label="时长">全天累计</td></tr>
 </tbody></table></div>
 <h3>5.3 动作库（宿舍可完成，无需器械，仅需弹力带）</h3>
 <p><strong>热身（每次 5 分钟，必做）</strong>：原地踏步 1 min → 肩绕环 20 次 → 髋绕环 20 次 → 猫牛式 10 次 → 徒手深蹲 10 次。</p>
@@ -391,21 +405,21 @@
 <div class="tw"><table>
 <thead><tr><th>动作</th><th>组数 × 次数</th><th>要点</th></tr></thead>
 <tbody>
-<tr><td>徒手深蹲</td><td>3 × 12–15</td><td>膝盖对脚尖，下蹲到大腿接近平行</td></tr>
-<tr><td>臀桥</td><td>3 × 15</td><td>顶点停 1 秒，夹臀</td></tr>
-<tr><td>保加利亚分腿蹲（扶床）</td><td>2 × 8/侧</td><td>后脚搭床沿，重心在前腿</td></tr>
-<tr><td>死虫</td><td>3 × 10/侧</td><td>腰贴地，对侧手脚缓慢伸展</td></tr>
-<tr><td>平板支撑</td><td>3 × 20–40 秒</td><td>不塌腰不撅臀</td></tr>
+<tr><td data-label="动作">徒手深蹲</td><td data-label="组数 × 次数">3 × 12–15</td><td data-label="要点">膝盖对脚尖，下蹲到大腿接近平行</td></tr>
+<tr><td data-label="动作">臀桥</td><td data-label="组数 × 次数">3 × 15</td><td data-label="要点">顶点停 1 秒，夹臀</td></tr>
+<tr><td data-label="动作">保加利亚分腿蹲（扶床）</td><td data-label="组数 × 次数">2 × 8/侧</td><td data-label="要点">后脚搭床沿，重心在前腿</td></tr>
+<tr><td data-label="动作">死虫</td><td data-label="组数 × 次数">3 × 10/侧</td><td data-label="要点">腰贴地，对侧手脚缓慢伸展</td></tr>
+<tr><td data-label="动作">平板支撑</td><td data-label="组数 × 次数">3 × 20–40 秒</td><td data-label="要点">不塌腰不撅臀</td></tr>
 </tbody></table></div>
 <p><strong>抗阻 B：上肢 + 核心</strong></p>
 <div class="tw"><table>
 <thead><tr><th>动作</th><th>组数 × 次数</th><th>要点</th></tr></thead>
 <tbody>
-<tr><td>跪姿俯卧撑</td><td>3 × 8–12</td><td>手比肩略宽，肘部约 45°</td></tr>
-<tr><td>弹力带划船</td><td>3 × 12–15</td><td>肩胛后缩，不耸肩</td></tr>
-<tr><td>弹力带侧平举</td><td>2 × 12</td><td>小重量，控制下放</td></tr>
-<tr><td>臀桥</td><td>2 × 15</td><td>激活臀部</td></tr>
-<tr><td>侧平板</td><td>2 × 20 秒/侧</td><td>身体成一条直线</td></tr>
+<tr><td data-label="动作">跪姿俯卧撑</td><td data-label="组数 × 次数">3 × 8–12</td><td data-label="要点">手比肩略宽，肘部约 45°</td></tr>
+<tr><td data-label="动作">弹力带划船</td><td data-label="组数 × 次数">3 × 12–15</td><td data-label="要点">肩胛后缩，不耸肩</td></tr>
+<tr><td data-label="动作">弹力带侧平举</td><td data-label="组数 × 次数">2 × 12</td><td data-label="要点">小重量，控制下放</td></tr>
+<tr><td data-label="动作">臀桥</td><td data-label="组数 × 次数">2 × 15</td><td data-label="要点">激活臀部</td></tr>
+<tr><td data-label="动作">侧平板</td><td data-label="组数 × 次数">2 × 20 秒/侧</td><td data-label="要点">身体成一条直线</td></tr>
 </tbody></table></div>
 <p><strong>抗阻 C：全身循环（3 轮，组间 60 秒）</strong></p>
 <p>深蹲 12 → 跪姿俯卧撑 10 → 弹力带划船 12 → 臀桥 15 → 平板支撑 30 秒</p>
@@ -414,10 +428,10 @@
 <div class="tw"><table>
 <thead><tr><th>周次</th><th>组数</th><th>说明</th></tr></thead>
 <tbody>
-<tr><td>第 1 周</td><td>每个动作 2 组</td><td>学动作，宁轻勿重，练完不应酸痛到影响走路</td></tr>
-<tr><td>第 2 周</td><td>3 组</td><td>保持次数，感受发力</td></tr>
-<tr><td>第 3 周</td><td>3 组 + 加次数或换更粗的弹力带</td><td>深蹲到 15–20 次，俯卧撑到 12 次</td></tr>
-<tr><td>第 4 周</td><td>维持，经前减量</td><td>经前 3–5 天减到 2 组或只做拉伸</td></tr>
+<tr><td data-label="周次">第 1 周</td><td data-label="组数">每个动作 2 组</td><td data-label="说明">学动作，宁轻勿重，练完不应酸痛到影响走路</td></tr>
+<tr><td data-label="周次">第 2 周</td><td data-label="组数">3 组</td><td data-label="说明">保持次数，感受发力</td></tr>
+<tr><td data-label="周次">第 3 周</td><td data-label="组数">3 组 + 加次数或换更粗的弹力带</td><td data-label="说明">深蹲到 15–20 次，俯卧撑到 12 次</td></tr>
+<tr><td data-label="周次">第 4 周</td><td data-label="组数">维持，经前减量</td><td data-label="说明">经前 3–5 天减到 2 组或只做拉伸</td></tr>
 </tbody></table></div>
 <h3>5.5 有氧与日常活动</h3>
 <ul>
@@ -432,13 +446,13 @@
 <div class="tw"><table>
 <thead><tr><th>措施</th><th>具体做法</th></tr></thead>
 <tbody>
-<tr><td>固定起床时间</td><td>每天 7:00（含周末，浮动不超过 30 分钟）。<strong>固定起床比固定入睡有效得多</strong></td></tr>
-<tr><td>咖啡因截止</td><td>14:00 之后不喝咖啡、茶、奶茶、可乐</td></tr>
-<tr><td>睡前 60 分钟</td><td>离开屏幕；做低刺激的事（洗澡、拉伸、纸质书）</td></tr>
-<tr><td>床的用途</td><td>床只用于睡觉，不躺着刷手机、不躺着学习</td></tr>
-<tr><td>午睡</td><td>≤20 分钟，不晚于 14:30</td></tr>
-<tr><td>环境</td><td>眼罩 + 耳塞 + 床帘；室温偏凉</td></tr>
-<tr><td>睡不着</td><td>20–30 分钟没睡着就起来做无聊的事，困了再回床，不要在床上硬躺</td></tr>
+<tr><td data-label="措施">固定起床时间</td><td data-label="具体做法">每天 7:00（含周末，浮动不超过 30 分钟）。<strong>固定起床比固定入睡有效得多</strong></td></tr>
+<tr><td data-label="措施">咖啡因截止</td><td data-label="具体做法">14:00 之后不喝咖啡、茶、奶茶、可乐</td></tr>
+<tr><td data-label="措施">睡前 60 分钟</td><td data-label="具体做法">离开屏幕；做低刺激的事（洗澡、拉伸、纸质书）</td></tr>
+<tr><td data-label="措施">床的用途</td><td data-label="具体做法">床只用于睡觉，不躺着刷手机、不躺着学习</td></tr>
+<tr><td data-label="措施">午睡</td><td data-label="具体做法">≤20 分钟，不晚于 14:30</td></tr>
+<tr><td data-label="措施">环境</td><td data-label="具体做法">眼罩 + 耳塞 + 床帘；室温偏凉</td></tr>
+<tr><td data-label="措施">睡不着</td><td data-label="具体做法">20–30 分钟没睡着就起来做无聊的事，困了再回床，不要在床上硬躺</td></tr>
 </tbody></table></div>
 <p><strong>熬夜的补偿逻辑</strong>：晚睡但早起 = 净睡眠不足。不要用&quot;周末补觉&quot;来还债，补觉会打乱节律，周一更难起。</p>
 <h3>6.2 久坐打断</h3>
@@ -451,10 +465,10 @@
 <div class="tw"><table>
 <thead><tr><th>阶段</th><th>时间</th><th>身体状态</th><th>方案调整</th></tr></thead>
 <tbody>
-<tr><td>月经期</td><td>第 1–5 天</td><td>乏力、可能腹痛</td><td>训练减量，以散步/拉伸为主；注意铁和蛋白；<strong>不称重</strong></td></tr>
-<tr><td>卵泡期</td><td>第 6–14 天</td><td>精力好、耐受力强</td><td>训练可加量，减脂效率较高，适合加一次有氧</td></tr>
-<tr><td>黄体期</td><td>第 15–28 天</td><td>食欲上升、水肿、体温升高</td><td><strong>不调目标，维持即可</strong>；增加钾和镁（香蕉、深绿叶菜）；控盐</td></tr>
-<tr><td>经前 3–5 天</td><td>—</td><td>体重可能 +0.5~2 kg</td><td>提前告诉她这是正常的，不解读、不加码</td></tr>
+<tr><td data-label="阶段">月经期</td><td data-label="时间">第 1–5 天</td><td data-label="身体状态">乏力、可能腹痛</td><td data-label="方案调整">训练减量，以散步/拉伸为主；注意铁和蛋白；<strong>不称重</strong></td></tr>
+<tr><td data-label="阶段">卵泡期</td><td data-label="时间">第 6–14 天</td><td data-label="身体状态">精力好、耐受力强</td><td data-label="方案调整">训练可加量，减脂效率较高，适合加一次有氧</td></tr>
+<tr><td data-label="阶段">黄体期</td><td data-label="时间">第 15–28 天</td><td data-label="身体状态">食欲上升、水肿、体温升高</td><td data-label="方案调整"><strong>不调目标，维持即可</strong>；增加钾和镁（香蕉、深绿叶菜）；控盐</td></tr>
+<tr><td data-label="阶段">经前 3–5 天</td><td data-label="时间">—</td><td data-label="身体状态">体重可能 +0.5~2 kg</td><td data-label="方案调整">提前告诉她这是正常的，不解读、不加码</td></tr>
 </tbody></table></div>
 <hr>
 <h2>7. 监测方案</h2>
@@ -470,12 +484,12 @@
 <div class="tw"><table>
 <thead><tr><th>指标</th><th>频率</th><th>方法</th><th>用途</th></tr></thead>
 <tbody>
-<tr><td>体重</td><td>每周 2 次</td><td>晨起排空后</td><td>看 7 日均值趋势</td></tr>
-<tr><td>腰围</td><td>每周 1 次</td><td>脐水平，空腹</td><td>比体重更能反映变化</td></tr>
-<tr><td>照片</td><td>每月 1 次</td><td>同角度、同光线、同服装</td><td>对抗&quot;我什么都没变&quot;的错觉</td></tr>
-<tr><td>饮食记录</td><td>每天</td><td>拍照即可，不称重不算卡</td><td>找出隐形热量（酱汁、饮料、零食）</td></tr>
-<tr><td>睡眠</td><td>每天</td><td>记入睡和起床时间</td><td>判断方案是否可持续</td></tr>
-<tr><td>主观感受</td><td>每周</td><td>精力/饥饿/情绪/训练状态，1–5 分</td><td>比体重更早预警</td></tr>
+<tr><td data-label="指标">体重</td><td data-label="频率">每周 2 次</td><td data-label="方法">晨起排空后</td><td data-label="用途">看 7 日均值趋势</td></tr>
+<tr><td data-label="指标">腰围</td><td data-label="频率">每周 1 次</td><td data-label="方法">脐水平，空腹</td><td data-label="用途">比体重更能反映变化</td></tr>
+<tr><td data-label="指标">照片</td><td data-label="频率">每月 1 次</td><td data-label="方法">同角度、同光线、同服装</td><td data-label="用途">对抗&quot;我什么都没变&quot;的错觉</td></tr>
+<tr><td data-label="指标">饮食记录</td><td data-label="频率">每天</td><td data-label="方法">拍照即可，不称重不算卡</td><td data-label="用途">找出隐形热量（酱汁、饮料、零食）</td></tr>
+<tr><td data-label="指标">睡眠</td><td data-label="频率">每天</td><td data-label="方法">记入睡和起床时间</td><td data-label="用途">判断方案是否可持续</td></tr>
+<tr><td data-label="指标">主观感受</td><td data-label="频率">每周</td><td data-label="方法">精力/饥饿/情绪/训练状态，1–5 分</td><td data-label="用途">比体重更早预警</td></tr>
 </tbody></table></div>
 <h3>7.3 数据怎么用</h3>
 <ul>
@@ -531,11 +545,11 @@
 <div class="tw"><table>
 <thead><tr><th>时间</th><th>体重变化</th><th>说明</th></tr></thead>
 <tbody>
-<tr><td>第 1 周</td><td>−1.5~2.5 kg</td><td>水分、糖原、肠内容物为主（外卖钠减少 + 规律进食），<strong>不是脂肪</strong></td></tr>
-<tr><td>第 2–4 周</td><td>每周 −0.4~0.7 kg</td><td>真实脂肪减少速度</td></tr>
-<tr><td>1 个月合计</td><td>−2.5~3.5 kg</td><td>其中约 1.8–2.5 kg 是脂肪</td></tr>
-<tr><td>腰围</td><td>−3~5 cm</td><td>比体重更早出现</td></tr>
-<tr><td>外观</td><td>脸、脚踝、手指浮肿消退；衣服变松</td><td>通常在第 2–3 周出现</td></tr>
+<tr><td data-label="时间">第 1 周</td><td data-label="体重变化">−1.5~2.5 kg</td><td data-label="说明">水分、糖原、肠内容物为主（外卖钠减少 + 规律进食），<strong>不是脂肪</strong></td></tr>
+<tr><td data-label="时间">第 2–4 周</td><td data-label="体重变化">每周 −0.4~0.7 kg</td><td data-label="说明">真实脂肪减少速度</td></tr>
+<tr><td data-label="时间">1 个月合计</td><td data-label="体重变化">−2.5~3.5 kg</td><td data-label="说明">其中约 1.8–2.5 kg 是脂肪</td></tr>
+<tr><td data-label="时间">腰围</td><td data-label="体重变化">−3~5 cm</td><td data-label="说明">比体重更早出现</td></tr>
+<tr><td data-label="时间">外观</td><td data-label="体重变化">脸、脚踝、手指浮肿消退；衣服变松</td><td data-label="说明">通常在第 2–3 周出现</td></tr>
 </tbody></table></div>
 <h3>9.2 平台期怎么处理</h3>
 <p>平台期是正常的，不是失败。ISSN 立场声明里有一句话值得记住：平台期也是&quot;练习维持&quot;的机会——最终目标本来就是维持在一个平台上。</p>
@@ -553,10 +567,10 @@
 <div class="tw"><table>
 <thead><tr><th>阶段</th><th>时间</th><th>目标摄入</th><th>重点</th></tr></thead>
 <tbody>
-<tr><td>减脂期</td><td>第 1–6 个月</td><td>1500–1600</td><td>建立习惯，降体脂，保肌肉</td></tr>
-<tr><td>评估期</td><td>第 6–7 个月</td><td>1800 左右</td><td>到 57 kg 后停 4 周，做 2.4 的四项判定</td></tr>
-<tr><td>过渡期</td><td>第 7–8 个月</td><td>1800–1900</td><td>热量缓慢加回，观察体重是否稳定</td></tr>
-<tr><td>维持期</td><td>第 9 个月起</td><td>1850–1950</td><td>体重区间管理，习惯自动化</td></tr>
+<tr><td data-label="阶段">减脂期</td><td data-label="时间">第 1–6 个月</td><td data-label="目标摄入">1500–1600</td><td data-label="重点">建立习惯，降体脂，保肌肉</td></tr>
+<tr><td data-label="阶段">评估期</td><td data-label="时间">第 6–7 个月</td><td data-label="目标摄入">1800 左右</td><td data-label="重点">到 57 kg 后停 4 周，做 2.4 的四项判定</td></tr>
+<tr><td data-label="阶段">过渡期</td><td data-label="时间">第 7–8 个月</td><td data-label="目标摄入">1800–1900</td><td data-label="重点">热量缓慢加回，观察体重是否稳定</td></tr>
+<tr><td data-label="阶段">维持期</td><td data-label="时间">第 9 个月起</td><td data-label="目标摄入">1850–1950</td><td data-label="重点">体重区间管理，习惯自动化</td></tr>
 </tbody></table></div>
 <blockquote>如果评估点通过、她决定继续往 55 走，减脂期顺延到第 9 个月，维持期从第 10 个月起。</blockquote>
 <h3>10.2 &quot;不反弹&quot;的真正机制</h3>
@@ -574,10 +588,10 @@
 <div class="tw"><table>
 <thead><tr><th>时间</th><th>检查内容</th></tr></thead>
 <tbody>
-<tr><td>3 个月</td><td>体重、腰围、体脂（有条件）、月经是否规律、训练进步（深蹲次数/弹力带阻力）、是否出现饮食失控</td></tr>
-<tr><td>6 个月</td><td>同上 + 一次体检（血常规、铁蛋白、甲功、血糖、血脂）；到 57 kg 时执行 2.4 的四项判定</td></tr>
-<tr><td>9 个月</td><td>仅在继续减到 55 kg 时才有这一项：月经、精力、训练表现是否仍然正常</td></tr>
-<tr><td>12 个月</td><td>同上 + 骨密度（如长期低能量摄入）、心理状态、是否形成稳定习惯</td></tr>
+<tr><td data-label="时间">3 个月</td><td data-label="检查内容">体重、腰围、体脂（有条件）、月经是否规律、训练进步（深蹲次数/弹力带阻力）、是否出现饮食失控</td></tr>
+<tr><td data-label="时间">6 个月</td><td data-label="检查内容">同上 + 一次体检（血常规、铁蛋白、甲功、血糖、血脂）；到 57 kg 时执行 2.4 的四项判定</td></tr>
+<tr><td data-label="时间">9 个月</td><td data-label="检查内容">仅在继续减到 55 kg 时才有这一项：月经、精力、训练表现是否仍然正常</td></tr>
+<tr><td data-label="时间">12 个月</td><td data-label="检查内容">同上 + 骨密度（如长期低能量摄入）、心理状态、是否形成稳定习惯</td></tr>
 </tbody></table></div>
 <h3>10.4 心理与关系层面（长期最关键）</h3>
 <ul>
@@ -602,11 +616,11 @@
 <div class="tw"><table>
 <thead><tr><th>检查</th><th>目的</th></tr></thead>
 <tbody>
-<tr><td>血常规 + 铁蛋白</td><td>年轻女性缺铁常见，贫血会让人乏力、减脂困难</td></tr>
-<tr><td>甲功三项</td><td>甲减会降低代谢、加重水肿</td></tr>
-<tr><td>空腹血糖 + 胰岛素</td><td>筛查胰岛素抵抗（HOMA-IR）</td></tr>
-<tr><td>性激素六项 + 妇科超声</td><td>月经不规律时排查多囊</td></tr>
-<tr><td>血脂</td><td>基础心血管风险</td></tr>
+<tr><td data-label="检查">血常规 + 铁蛋白</td><td data-label="目的">年轻女性缺铁常见，贫血会让人乏力、减脂困难</td></tr>
+<tr><td data-label="检查">甲功三项</td><td data-label="目的">甲减会降低代谢、加重水肿</td></tr>
+<tr><td data-label="检查">空腹血糖 + 胰岛素</td><td data-label="目的">筛查胰岛素抵抗（HOMA-IR）</td></tr>
+<tr><td data-label="检查">性激素六项 + 妇科超声</td><td data-label="目的">月经不规律时排查多囊</td></tr>
+<tr><td data-label="检查">血脂</td><td data-label="目的">基础心血管风险</td></tr>
 </tbody></table></div>
 <blockquote>多囊和胰岛素抵抗在年轻女性中并不罕见，而这两种情况下的减重策略需要调整（比如更重视胰岛素敏感性和抗阻训练）。查一次，是为了排除，不是为了找病。</blockquote>
 <hr>
@@ -614,13 +628,13 @@
 <div class="tw"><table>
 <thead><tr><th>场景</th><th>做法</th></tr></thead>
 <tbody>
-<tr><td>聚餐/火锅</td><td>按 4.9 四步法；第二天正常吃，不补偿</td></tr>
-<tr><td>宵夜</td><td>无糖酸奶、鸡蛋、牛奶；不点烧烤炸鸡</td></tr>
-<tr><td>暴食一次</td><td>不催吐、不补偿性断食；下一餐正常；记录触发情境（压力？熬夜？没吃早饭？）</td></tr>
-<tr><td>考试周</td><td>只保三件事：早餐蛋白、步数 5000、睡 7 小时；训练暂停</td></tr>
-<tr><td>生病/胃痛</td><td>暂停减脂，恢复正常饮食，病好后再回来</td></tr>
-<tr><td>经前暴食冲动</td><td>提前加一份蛋白加餐；准备低热量替代（黄瓜、无糖酸奶）；不囤零食</td></tr>
-<tr><td>体重突然涨 1–2 kg</td><td>先看是不是经前、是不是吃了外卖、是不是便秘；3 天后再看</td></tr>
+<tr><td data-label="场景">聚餐/火锅</td><td data-label="做法">按 4.9 四步法；第二天正常吃，不补偿</td></tr>
+<tr><td data-label="场景">宵夜</td><td data-label="做法">无糖酸奶、鸡蛋、牛奶；不点烧烤炸鸡</td></tr>
+<tr><td data-label="场景">暴食一次</td><td data-label="做法">不催吐、不补偿性断食；下一餐正常；记录触发情境（压力？熬夜？没吃早饭？）</td></tr>
+<tr><td data-label="场景">考试周</td><td data-label="做法">只保三件事：早餐蛋白、步数 5000、睡 7 小时；训练暂停</td></tr>
+<tr><td data-label="场景">生病/胃痛</td><td data-label="做法">暂停减脂，恢复正常饮食，病好后再回来</td></tr>
+<tr><td data-label="场景">经前暴食冲动</td><td data-label="做法">提前加一份蛋白加餐；准备低热量替代（黄瓜、无糖酸奶）；不囤零食</td></tr>
+<tr><td data-label="场景">体重突然涨 1–2 kg</td><td data-label="做法">先看是不是经前、是不是吃了外卖、是不是便秘；3 天后再看</td></tr>
 </tbody></table></div>
 <hr>
 <h2>13. 男友执行手册</h2>
