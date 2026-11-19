@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>琳琳大王的登基方案</title>
+<style>
+  :root { --ink:#1f2328; --muted:#5b6572; --line:#d8dee6; --accent:#2f6f5e; --bg:#fbfaf7; }
+  * { box-sizing: border-box; }
+  body { margin:0; padding:20px 16px 60px; background:var(--bg); color:var(--ink);
+         font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",system-ui,-apple-system,sans-serif;
+         font-size:16px; line-height:1.75; }
+  .wrap { max-width:860px; margin:0 auto; background:#fff; padding:28px 26px 40px;
+          border:1px solid var(--line); border-radius:10px; }
+  h1 { font-size:1.65em; margin:0 0 .6em; padding-bottom:.4em; border-bottom:3px solid var(--accent); }
+  h2 { font-size:1.28em; margin:2em 0 .6em; padding-left:.55em; border-left:5px solid var(--accent); }
+  h3 { font-size:1.08em; margin:1.5em 0 .5em; color:var(--accent); }
+  h4 { font-size:1em; margin:1.2em 0 .4em; }
+  p { margin:.55em 0; }
+  ul, ol { margin:.5em 0 .9em; padding-left:1.5em; }
+  li { margin:.25em 0; }
+  ul.check { list-style:none; padding-left:.2em; }
+  ul.check li::before { content:"\2610"; margin-right:.5em; color:var(--accent); font-size:1.1em; }
+  blockquote { margin:1em 0; padding:.7em 1em; background:#f2f6f4; border-left:4px solid var(--accent);
+               color:#33403a; border-radius:0 6px 6px 0; }
+  hr { border:0; border-top:1px solid var(--line); margin:2em 0; }
+  .tw { overflow-x:auto; margin:.9em 0 1.2em; -webkit-overflow-scrolling:touch; }
+  table { border-collapse:collapse; width:100%; font-size:.94em; min-width:420px; }
+  th, td { border:1px solid var(--line); padding:.5em .6em; text-align:left; vertical-align:top; }
+  th { background:#eef3f0; font-weight:600; white-space:nowrap; }
+  tbody tr:nth-child(even) { background:#fafbfa; }
+  strong { color:#12403a; }
+  @media (max-width:600px) {
+    body { padding:10px 8px 40px; font-size:15px; }
+    .wrap { padding:18px 14px 28px; border-radius:6px; }
+    table { min-width:380px; font-size:.88em; }
+  }
+  @media print {
+    body { background:#fff; padding:0; }
+    .wrap { border:0; padding:0; max-width:none; }
+    h2 { page-break-after:avoid; }
+    .tw { overflow:visible; }
+    table { min-width:0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>琳琳大王的登基方案</h1>
+<blockquote>制定日期：2026-11-19<br>适用对象：21 岁女性，在校大学生，164 cm / 67 kg<br>说明：本方案基于公开循证资料与已知信息制定，不替代医生诊断。出现&quot;红旗信号&quot;（见第 11 节）请先就医。</blockquote>
+<hr>
+<h2>0. 基础信息与估算前提</h2>
+<div class="tw"><table>
+<thead><tr><th>项目</th><th>已知 / 假设</th></tr></thead>
+<tbody>
+<tr><td>年龄</td><td>21 岁</td></tr>
+<tr><td>身高</td><td>164 cm</td></tr>
+<tr><td>体重</td><td>约 67 kg</td></tr>
+<tr><td>BMI</td><td>24.9（超重，中国标准 ≥24）</td></tr>
+<tr><td>活动水平</td><td>久坐为主，每周 1–2 次散步/跳操</td></tr>
+<tr><td>睡眠</td><td>约 6 小时，经常熬夜，晚睡早起</td></tr>
+<tr><td>饮食</td><td>以外卖/下馆子为主，住校，每周 2 次咖啡或奶茶</td></tr>
+<tr><td>健康史</td><td>胃炎/反酸/便秘或肠易激；无其他用药</td></tr>
+<tr><td>预算</td><td>偏紧</td></tr>
+<tr><td>支持</td><td>男友可陪同执行</td></tr>
+</tbody></table></div>
+<p><strong>热量估算（Mifflin-St Jeor）</strong></p>
+<ul>
+<li>基础代谢：约 1429 kcal/天</li>
+<li>日常总消耗（活动系数 1.4）：约 1990 kcal/天</li>
+<li>减脂目标摄入：<strong>1500–1600 kcal/天</strong>，缺口约 400–500 kcal/天</li>
+</ul>
+<p>这是按<strong>当前体重 67 kg</strong> 算的。体重每下降 5 kg，基础代谢大约降 50 kcal，到时候按同样公式重算一次，不必每次微调。</p>
+<blockquote>估算误差 ±100 kcal 很正常。真正的校准靠第 7 节的监测数据——执行两周后看体重均值走势，再决定加减 100 kcal，不要一上来就精确到个位数。另外，用 67 kg 而不是目标体重算蛋白，是为了在减脂期尽量保住肌肉；这一点比&quot;算得准&quot;更重要。</blockquote>
+<hr>
+<h2>1. 现状分析</h2>
+<h3>1.1 最重要的一条：这次减重有医学依据，但不是&quot;越瘦越好&quot;</h3>
+<p>按中国成人标准（WS/T 428-2013），BMI 18.5–23.9 为正常，24.0–27.9 为超重，≥28.0 为肥胖。<strong>164 cm、67 kg，BMI = 24.9，属于超重。</strong></p>
+<p>这里要更正我上一版的判断：此前按 60 kg 估算（BMI 22.0），结论是&quot;不在医学减重范围&quot;；实际 67 kg 让 BMI 跨过了 24 这条线，7 kg 的差距足以改变整个定性。<strong>减重这次是有明确医学依据的</strong>，不是单纯的外形诉求。</p>
+<p>但&quot;有依据&quot;不等于&quot;越瘦越好&quot;，边界在三个地方：</p>
+<ol>
+<li><strong>目标是 5%–10%。</strong> 超重人群减掉初始体重的 5%–10%（她即 3.4–6.7 kg），血压、血糖、血脂和胰岛素敏感性就会有可测量的改善。减到 BMI 21–22（约 57–59 kg）已经足够，再往下收益递减、代价上升。</li>
+<li><strong>减掉的必须是脂肪。</strong> 她久坐、几乎不运动，体重里肌肉占比大概率偏低。如果只靠少吃，掉的是脂肪加肌肉，结果是&quot;体重轻了、人看起来还是松、基础代谢更低、更容易反弹&quot;。所以高蛋白 + 抗阻不是可选项，是这个方案的地基。</li>
+<li><strong>代谢病的风险要顺带查一次。</strong> BMI 24.9 加上久坐，值得查空腹血糖、胰岛素和血脂——不是找病，是确认有没有胰岛素抵抗，因为那会改变减重的打法（更重视抗阻和控糖，而不是单纯少吃）。</li>
+</ol>
+<p>所以本方案对&quot;一个月见效&quot;的定义是：<strong>体重下降 2.5–3.5 kg、腰围下降 3–5 cm、浮肿消退、精力变好</strong>，其中第一周的水分下降不算成绩。</p>
+<h3>1.2 四个真正决定方案形态的约束</h3>
+<p><strong>约束一：胃肠问题（胃炎/反酸/便秘或肠易激）</strong></p>
+<p>这一条直接排除了四种流行做法：</p>
+<ul>
+<li><strong>长时间断食（16:8、5:2）</strong>：空腹时间过长会刺激胃酸分泌，加重反酸和胃部不适。</li>
+<li><strong>生酮/极低碳水</strong>：高脂饮食延缓胃排空，对反酸和腹胀不友好，且依从性差。</li>
+<li><strong>代餐粉</strong>：部分产品含较多代糖（赤藓糖醇、山梨糖醇），在肠易激人群里容易引起腹胀腹泻。</li>
+<li><strong>空腹喝咖啡</strong>：她每周 2 次咖啡，如果放在早晨空腹，是反酸的常见诱因。</li>
+</ul>
+<p><strong>约束二：睡眠 6 小时且熬夜</strong></p>
+<p>这是全方案里性价比最高的一项。同样热量缺口下，睡眠受限的人减掉的脂肪更少、瘦体重流失更多，饥饿感和对高热量食物的渴望更强。换句话说，<strong>她如果只改一件事，应该改睡眠，而不是戒奶茶</strong>。</p>
+<p><strong>约束三：住校 + 外卖为主 + 预算紧</strong></p>
+<p>任何需要&quot;每天自己煎鸡胸、备五个餐盒&quot;的方案，对她都是不可执行的。方案必须在&quot;点外卖、吃食堂&quot;这个前提下成立，否则写得再科学也是废纸。</p>
+<p><strong>约束四：体重焦虑 + 每天称重 + 怕反弹 + 被说过胖</strong></p>
+<p>这四条放在一起是风险组合，不是动力组合。</p>
+<ul>
+<li>每天称重对减脂没有额外好处，但会把日波动（经前水潴留 0.5–2 kg、外卖钠、糖原、便秘，任一都能让秤跳 1 kg 以上）放大成情绪事件。</li>
+<li>一次&quot;没掉&quot;就可能触发两种反应：破罐破摔，或者过度限制。后者是进食障碍的常见起点。</li>
+<li>她&quot;能接受每天称重&quot;，不等于每天称重对她有好处。<strong>本方案不采用每日称重</strong>，改用&quot;每周 2 次 + 只看 7 日均值&quot;（理由见 7.1）。</li>
+</ul>
+<h3>1.3 她的优势（别忽略）</h3>
+<ul>
+<li>21 岁，代谢和恢复能力强，对训练和饮食调整的反应通常很快。</li>
+<li>没有认真减过肥，也没有极端节食史——<strong>没有代谢适应和&quot;节食—暴食&quot;循环的包袱</strong>，这是很好的起点。</li>
+<li>没有长期用药，没有已知慢性病。</li>
+<li>每周已有 1–2 次活动，不是从零开始。</li>
+<li>有人陪着执行，社会支持是减重成功的稳定预测因素之一。</li>
+</ul>
+<hr>
+<h2>2. 目标设定</h2>
+<p>目标分三层，<strong>行为目标优先于结果目标</strong>——因为行为可控，结果不可控，而不可控的目标会制造焦虑。</p>
+<h3>2.1 结果目标（分阶段，每阶段有评估点）</h3>
+<div class="tw"><table>
+<thead><tr><th>阶段</th><th>时间</th><th>体重</th><th>BMI</th><th>围度</th><th>体感</th></tr></thead>
+<tbody>
+<tr><td>第 1 个月</td><td>1 个月</td><td>−2.5~3.5 kg（至 63.5–64.5）</td><td>23.6–24.0</td><td>腰围 −3~5 cm</td><td>脸和脚踝浮肿消退，衣服变松</td></tr>
+<tr><td>阶段一</td><td>第 3 个月</td><td>累计 −6 kg 左右（至 61）</td><td>22.7</td><td>腰围 −6~8 cm</td><td>体能明显变好，深蹲次数翻倍</td></tr>
+<tr><td>阶段二</td><td>第 6 个月</td><td>累计 −10 kg 左右（至 57）</td><td>21.2</td><td>维持</td><td>不靠意志力的日常习惯成形</td></tr>
+<tr><td><strong>评估点 A</strong></td><td>第 6–7 个月</td><td>57 kg 时做四项判定（见 2.4）</td><td>21.2</td><td>—</td><td>月经、精力、体脂、训练表现</td></tr>
+<tr><td>阶段三（可选）</td><td>第 9 个月</td><td>55 kg，仅当 A 全项通过</td><td>20.4</td><td>维持</td><td>需要额外抗阻与蛋白保障</td></tr>
+<tr><td>维持</td><td>第 12 个月</td><td>稳定在 55–58 kg 区间</td><td>20.4–21.6</td><td>维持</td><td>不反弹，指标改善</td></tr>
+</tbody></table></div>
+<blockquote><strong>50 kg（100 斤）不在上表的时间轴上。</strong> 它是一个需要单独评估的选项，理由见 2.4。</blockquote>
+<h3>2.2 体成分目标（比体重更重要）</h3>
+<ul>
+<li>体脂率下降 3–5 个百分点</li>
+<li>骨骼肌量不下降（这是抗阻训练 + 高蛋白要保的底线）</li>
+<li>腰臀比下降</li>
+</ul>
+<h3>2.3 行为目标（每周考核，与体重脱钩）</h3>
+<ul>
+<li>每周 3 次抗阻训练</li>
+<li>每天 7000 步</li>
+<li>每天早餐先有一掌心蛋白</li>
+<li>每天睡够 7 小时（分阶段达成）</li>
+<li>每周 2 次固定称重并记录</li>
+</ul>
+<blockquote><strong>考核规则</strong>：一周内行为目标完成 ≥4 项，就算这周成功，不管体重怎么变。这条要写下来贴在桌上，因为它是对抗&quot;秤上没动就放弃&quot;的唯一有效办法。</blockquote>
+<hr>
+<h3>2.4 关于&quot;减到 100 斤&quot;</h3>
+<p><strong>先看数字</strong>：164 cm 下 100 斤 = 50 kg = <strong>BMI 18.6</strong>。公共卫生上，18.5 是&quot;低于此算体重过低&quot;的界线，不是&quot;健康目标线&quot;——她要停在离这条线 0.1 的地方。</p>
+<p><strong>再说距离</strong>：从 67 kg 到 50 kg 是 −17 kg、−25% 体重。按每周 0.4–0.6 kg 的可持续速度，需要 8–12 个月，而且最后 3 kg 会明显变慢。任何声称一个月到 100 斤的方案，掉的一定是水和肌肉。</p>
+<p><strong>三档代价</strong>（按发生概率排序）：</p>
+<ol>
+<li><strong>肌肉流失。</strong> 她久坐、不训练，减重时肌肉本来就在掉；如果为了冲到 50 kg 长期压热量，掉秤里肌肉的比例会越来越高。结果是体重到了 50，人看起来还是&quot;松&quot;，甚至体脂率反而上升。</li>
+<li><strong>月经紊乱。</strong> 长期能量缺口 + BMI 逼近 18.5，是功能性下丘脑性闭经的典型背景。一旦停经，恢复往往要几个月到一年，还伴随骨密度下降。</li>
+<li><strong>代谢与情绪。</strong> 长期低摄入会让静息代谢下降、怕冷、脱发、注意力差、对食物过度关注——这些最容易在 50 kg 附近出现。</li>
+</ol>
+<p><strong>最关键的一点</strong>：50 kg 不等于&quot;更瘦的样子&quot;。同样 164 cm，57 kg 但有肌肉的人，通常比 50 kg 但肌肉少的人看起来更紧、腰更细、体态更好。她想要的如果是&quot;穿衣显瘦&quot;，把体重停在 55–57 并练起来，比饿到 50 更可能达到。</p>
+<p><strong>所以本方案怎么处理</strong>：</p>
+<ul>
+<li>把 100 斤设为<strong>评估点 A</strong>，不设为执行目标。</li>
+<li>先走到 57 kg，用四个指标判断要不要继续：</li>
+</ul>
+<ol>
+<li>月经是否规律（周期、经量）</li>
+<li>体脂率（有条件测一次；没有就看腰围和照片）</li>
+<li>精力、睡眠、怕冷、脱发</li>
+<li>训练表现是否还在进步</li>
+</ol>
+<ul>
+<li>四项都正常、她本人仍想更低 → 再讨论 55 kg；55 之后仍想 50，需要体脂率数据和医生意见。</li>
+<li>四项里任何一项出问题 → 停止减重，先恢复。</li>
+</ul>
+<p><strong>如果她坚持要 50 kg</strong>，不是不能走，但不能按&quot;越快越好&quot;走：</p>
+<ol>
+<li>蛋白 100–110 g 一天都不能降（保肌肉的底线）</li>
+<li>抗阻每周 3 次不能省（有氧替代不了）</li>
+<li>每周减重不超过 0.5 kg，最后 5 kg 按 0.3 kg/周</li>
+<li>每 8–12 周安排 1–2 周维持期（吃到维持热量），防止代谢适应累积</li>
+<li>月经推迟超过 2 周、持续怕冷、脱发、情绪低落 → 立即停止并就医</li>
+</ol>
+<p>按这个走，67 → 50 大概要 10–14 个月。这是这条路线的真实价格，写在这里，免得后面觉得&quot;怎么这么慢&quot;。</p>
+<blockquote>我会在什么条件下改口：如果测出来她体脂率确实偏高、骨架偏小，且低体重下月经和精力依然正常，那 50 kg 对她的风险比我估计的低，可以谈。但没有这些数据之前，我不建议把它写成目标。</blockquote>
+<h2>3. 总原则（五条，其余都是细节）</h2>
+<ol>
+<li><strong>热量缺口是唯一的必要条件</strong>，其余方法都是它的包装。缺口不大（350–450 kcal），但必须持续。</li>
+<li><strong>蛋白和抗阻训练是减脂期保住肌肉的两个必要条件</strong>，与采用哪种饮食法无关。国际运动营养学会 2026 年立场声明明确写了这一点。</li>
+<li><strong>不采用任何需要&quot;忍&quot;的方案。</strong> 能坚持 6 个月的普通方案，胜过能坚持 3 周的完美方案。</li>
+<li><strong>不改生活形态，只改选择。</strong> 她继续点外卖、继续住校、继续每周 2 次奶茶，只是点法和喝法变了。</li>
+<li><strong>体重是滞后指标，行为是先行指标。</strong> 只盯前者必然焦虑，盯后者才有掌控感。</li>
+</ol>
+<hr>
+<h2>4. 饮食方案（大学生可执行版）</h2>
+<p>这一节的设计前提是：<strong>不称重、不计算卡路里、不做特殊备餐</strong>。她每天在食堂和外卖之间做选择，方案必须能在打饭窗口前 10 秒内用出来。</p>
+<p>精确到克不是没用，而是<strong>用错了阶段</strong>。份量法（手掌、餐盘）的误差大约 ±15–20%，对&quot;一个月减 2.5–3.5 kg&quot;这个目标完全够用；精确到克只在两个时候值得做：连续 3 周不掉称、或者想核对某一天的隐形热量。所以克数放在 4.12 附录，日常不用。</p>
+<h3>4.1 每日目标（后台参数，她不用记）</h3>
+<div class="tw"><table>
+<thead><tr><th>项目</th><th>目标</th><th>折算成&quot;份&quot;</th></tr></thead>
+<tbody>
+<tr><td>总热量</td><td>1500–1600 kcal</td><td>—</td></tr>
+<tr><td>蛋白质</td><td>100–110 g</td><td>蛋白 14 份左右（1 份≈7 g）</td></tr>
+<tr><td>主食</td><td>相当于米饭 400–500 g（熟）</td><td>主食 5–6 份</td></tr>
+<tr><td>蔬菜</td><td>400–500 g</td><td>蔬菜 3 份</td></tr>
+<tr><td>水果</td><td>200–300 g</td><td>水果 2 份</td></tr>
+<tr><td>脂肪</td><td>40–50 g（含烹调用油）</td><td>脂肪 3 份</td></tr>
+<tr><td>饮水</td><td>1700–2000 ml</td><td>—</td></tr>
+</tbody></table></div>
+<blockquote>这一格是给&quot;想核对的人&quot;看的。<strong>她不需要背这些数字</strong>，只需要记住下面四条规则。</blockquote>
+<h3>4.2 她只需要记住的四条规则</h3>
+<ol>
+<li><strong>每餐先有一掌心蛋白。</strong> 早餐也要有（鸡蛋、牛奶、豆浆都算）。这是全方案最不能省的一条。</li>
+<li><strong>主食一拳头，米饭默认&quot;半份&quot;。</strong> 食堂打饭时说&quot;半份饭&quot;就行，不用知道多少克。</li>
+<li><strong>蔬菜两拳头，先吃菜再吃饭。</strong> 顺序影响饱腹感，不花钱。</li>
+<li><strong>饮料只喝无糖的。</strong> 白水、纯茶、美式、无糖气泡水。奶茶保留每周 2 次，但改三分糖。</li>
+</ol>
+<p>四条都做到，热量缺口基本就成立了。剩下的细节都是优化，不是前提。</p>
+<h3>4.3 手掌份量法（替代秤）</h3>
+<div class="tw"><table>
+<thead><tr><th>单位</th><th>大概是多少</th><th>对应食物</th><th>每天几次</th></tr></thead>
+<tbody>
+<tr><td>一掌心</td><td>手掌大小、厚度约小指</td><td>肉/鱼/虾 约 100 g</td><td>3–4 次</td></tr>
+<tr><td>一拳头</td><td>自己的拳头</td><td>米饭 100–150 g（熟，食堂半份约 100 g）、面条 1 碗、红薯 1 个</td><td>3 次</td></tr>
+<tr><td>两拳头</td><td>双手捧起来</td><td>蔬菜 300–400 g</td><td>2–3 次</td></tr>
+<tr><td>一拇指</td><td>拇指尖大小</td><td>油 10 g、花生酱 1 勺</td><td>全天合计</td></tr>
+<tr><td>一捧</td><td>双手合拢</td><td>水果 200 g、坚果 10 g</td><td>水果 2 次、坚果 1 次</td></tr>
+</tbody></table></div>
+<p><strong>餐盘法</strong>（打菜时用，比记数字快）：把餐盘想象成四格——<strong>一半放蔬菜，四分之一放蛋白，四分之一放主食</strong>。食堂的餐盘本来就是分格的，照着摆就行。</p>
+<h3>4.4 食堂怎么打（口令版）</h3>
+<div class="tw"><table>
+<thead><tr><th>窗口</th><th>怎么点</th><th>避雷</th></tr></thead>
+<tbody>
+<tr><td>打饭窗口</td><td>&quot;米饭半份&quot; + 一荤两素</td><td>别要浇汁、别让师傅多打饭</td></tr>
+<tr><td>荤菜</td><td>蒸、煮、白切、卤、清炒 优先</td><td>干锅、水煮、红烧、糖醋、油炸</td></tr>
+<tr><td>素菜</td><td>清炒、凉拌、白灼</td><td>地三鲜、干煸豆角、油焖茄子（都过油）</td></tr>
+<tr><td>汤</td><td>紫菜蛋花汤、番茄蛋汤</td><td>排骨汤、奶油浓汤、免费例汤（盐最多）</td></tr>
+<tr><td>早餐</td><td>鸡蛋 2 个 + 豆浆/牛奶 + 玉米或包子</td><td>油条、煎饼果子加脆饼、甜豆浆</td></tr>
+<tr><td>面食</td><td>牛肉面加蛋加菜，面吃 2/3，汤不喝</td><td>红油、卤汁拌面、大排面</td></tr>
+<tr><td>麻辣烫/砂锅</td><td>清汤，多绿叶菜 + 菌菇 + 豆腐 + 瘦肉/虾，不喝汤</td><td>丸子、油豆腐、方便面、麻酱碟</td></tr>
+</tbody></table></div>
+<p><strong>打菜口诀（背着说）</strong>：</p>
+<blockquote>&quot;米饭半份，菜少油，多给点青菜，不要浇汁。&quot;</blockquote>
+<p>食堂三个最容易踩的坑：<strong>盖浇饭</strong>（汁拌饭，热量翻倍）、<strong>干锅类</strong>（油最多）、<strong>免费例汤</strong>（盐最多，直接对应第二天水肿）。避开这三个，食堂其实是最容易吃对的地方。</p>
+<h3>4.5 外卖点单公式</h3>
+<p><strong>一个公式</strong>：<strong>1 份蛋白 + 1 份主食（要半份）+ 1 份蔬菜 + 无糖饮料</strong></p>
+<div class="tw"><table>
+<thead><tr><th>品类</th><th>怎么点</th><th>一句话备注</th></tr></thead>
+<tbody>
+<tr><td>中式快餐</td><td>一荤两素，荤选蒸/白切/卤</td><td>米饭半份，菜少油</td></tr>
+<tr><td>黄焖鸡/焖锅</td><td>去皮、少汁、加青菜</td><td>不要汤汁拌饭</td></tr>
+<tr><td>麻辣烫</td><td>清汤，多菜 + 豆腐 + 瘦肉/虾滑</td><td>不喝汤，不要丸子和面</td></tr>
+<tr><td>轻食沙拉</td><td>鸡胸/牛肉/虾，酱另放用一半</td><td>酱分开放</td></tr>
+<tr><td>面/粉</td><td>清汤，加蛋加菜，面吃 2/3</td><td>汤不喝</td></tr>
+<tr><td>日料</td><td>刺身、烤鱼、烤鸡串</td><td>不要天妇罗和卷寿司</td></tr>
+<tr><td>火锅</td><td>清汤锅，涮肉 + 菜，蘸料用醋 + 蒜</td><td>不要麻酱和油碟</td></tr>
+</tbody></table></div>
+<p><strong>判断一家店能不能点</strong>：菜单里有&quot;蒸/煮/烤/白灼&quot;字样、能备注少油、有单独一份青菜。三个里有两个就下单。</p>
+<h3>4.6 一周轮转表（照着吃，不用算）</h3>
+<div class="tw"><table>
+<thead><tr><th>日</th><th>早</th><th>午</th><th>晚</th><th>加餐</th></tr></thead>
+<tbody>
+<tr><td>一</td><td>鸡蛋 2 个 + 牛奶 + 全麦面包 2 片</td><td>米饭半份 + 清蒸鱼 + 蒜蓉西兰花</td><td>鸡胸炒青椒 + 米饭半份 + 凉拌黄瓜</td><td>苹果 + 无糖酸奶</td></tr>
+<tr><td>二</td><td>燕麦一拳头 + 牛奶 + 鸡蛋 2 个</td><td>米饭半份 + 黄焖鸡（去皮少汁）+ 清炒青菜</td><td>番茄豆腐汤 + 米饭半份 + 时蔬</td><td>橙子 + 即食鸡胸 1 包</td></tr>
+<tr><td>三</td><td>全麦面包 2 片 + 鸡蛋 2 个 + 无糖豆浆</td><td>清汤麻辣烫（多菜 + 虾 + 豆腐）+ 米饭半份</td><td>去皮鸡腿 + 西兰花 + 米饭半份</td><td>苹果 + 牛奶</td></tr>
+<tr><td>四</td><td>鸡蛋 2 个 + 牛奶 + 玉米 1 根</td><td>牛肉面加蛋加菜（面吃 2/3，不喝汤）</td><td>白灼虾 + 炒青菜 + 米饭半份</td><td>酸奶 + 香蕉</td></tr>
+<tr><td>五</td><td>燕麦一拳头 + 牛奶 + 鸡蛋 1 个</td><td>轻食（糙米饭 + 鸡腿 + 蔬菜，酱一半）</td><td>番茄炒蛋 + 米饭半份 + 青菜 + 鸡胸</td><td>酸奶 + 坚果一小把</td></tr>
+<tr><td>六</td><td>鸡蛋 3 个 + 牛奶 + 面包 1 片</td><td>外食（按 4.9 四步法点）</td><td>番茄龙利鱼 + 米饭半份 + 青菜</td><td>水果 + 酸奶</td></tr>
+<tr><td>日</td><td>豆浆 + 鸡蛋 2 个 + 玉米 + 牛奶</td><td>米饭半份 + 番茄炒蛋 + 卤鸡腿（去皮）+ 时蔬</td><td>虾仁滑蛋 + 米饭半份 + 青菜</td><td>苹果 + 坚果</td></tr>
+</tbody></table></div>
+<p><strong>用法</strong>：不用严格对号入座，只要每天满足&quot;早中晚各有一掌心蛋白 + 两顿有蔬菜 + 主食半份&quot;这个骨架，吃什么可以自由替换（替换规则见 4.12）。</p>
+<h3>4.7 没食堂也没外卖时（便利店/超市组合）</h3>
+<div class="tw"><table>
+<thead><tr><th>组合</th><th>内容</th><th>大概</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>茶叶蛋 2 个 + 无糖豆浆 1 瓶 + 全麦面包 1 袋</td><td>蛋白 24 g</td></tr>
+<tr><td>B</td><td>关东煮（萝卜、海带、豆腐、鸡蛋，共 5 串，不喝汤）+ 饭团 1 个</td><td>蛋白 20 g</td></tr>
+<tr><td>C</td><td>即食鸡胸 1 包 + 无糖酸奶 1 杯 + 玉米 1 根 + 圣女果</td><td>蛋白 32 g</td></tr>
+</tbody></table></div>
+<p>便利店避雷：饭团选鸡肉/三文鱼，不选沙拉酱金枪鱼；关东煮不选丸子和油豆腐；咖啡只选美式。</p>
+<p><strong>如果她有小电煮锅</strong>（非必需），三个 10 分钟组合：番茄龙利鱼（番茄 1 个 + 鱼片，煮 8 分钟）、一锅蒸（鸡胸 + 西兰花 + 红薯，同锅 12 分钟）、豆腐虾仁汤（6 分钟）。没锅就跳过，不影响方案成立。</p>
+<h3>4.8 饮品处理</h3>
+<div class="tw"><table>
+<thead><tr><th>原来</th><th>改成</th><th>省下</th></tr></thead>
+<tbody>
+<tr><td>全糖奶茶 500 ml</td><td>三分糖去奶盖 / 纯茶 / 美式</td><td>200–350 kcal</td></tr>
+<tr><td>拿铁加糖</td><td>拿铁不加糖（脱脂或燕麦奶）</td><td>80–120 kcal</td></tr>
+<tr><td>果汁</td><td>整个水果</td><td>60–100 kcal</td></tr>
+<tr><td>可乐</td><td>无糖气泡水</td><td>140 kcal</td></tr>
+</tbody></table></div>
+<p><strong>两条纪律</strong>：咖啡不空腹喝（放餐后，她有反酸）；下午 2 点后不摄入咖啡因（半衰期 5–6 小时，直接毁睡眠）。代糖饮料适量即可，赤藓糖醇、山梨糖醇在肠易激人群里容易胀气。</p>
+<h3>4.9 聚餐四步法</h3>
+<ol>
+<li>先吃菜和蛋白，最后吃主食。</li>
+<li>主食只盛半碗，别一开始就盛满。</li>
+<li>避开五个词：干锅、水煮、糖醋、红烧、油炸。</li>
+<li>酒能不喝就不喝（酒精抑制脂肪氧化，还破坏睡眠）。</li>
+</ol>
+<p>聚餐后第二天<strong>正常吃，不要补偿性断食</strong>。补偿是&quot;聚餐—节食—暴食&quot;循环的入口。</p>
+<h3>4.10 胃肠友好细则</h3>
+<div class="tw"><table>
+<thead><tr><th>问题</th><th>做法</th></tr></thead>
+<tbody>
+<tr><td>反酸</td><td>三餐规律、间隔不超过 5 小时；晚餐睡前 3 小时；咖啡随餐；少油炸少辣</td></tr>
+<tr><td>便秘</td><td>水 1700–2000 ml；燕麦、苹果、火龙果；每天走动；蔬菜两周内渐进增加</td></tr>
+<tr><td>腹胀/肠易激</td><td>记录 2 周饮食与症状，排查触发物（奶茶的乳糖、洋葱、蒜、豆类、代糖）</td></tr>
+<tr><td>胃炎</td><td>不空腹吃水果和咖啡；不过饱；细嚼慢咽</td></tr>
+</tbody></table></div>
+<p>蔬菜一定要&quot;渐进&quot;。一周内从 100 g 跳到 500 g，腹胀会让她以为方案有问题，然后放弃。</p>
+<h3>4.11 预算</h3>
+<div class="tw"><table>
+<thead><tr><th>项目</th><th>日均</th></tr></thead>
+<tbody>
+<tr><td>早餐（鸡蛋 + 牛奶/豆浆 + 主食）</td><td>7–9 元</td></tr>
+<tr><td>午餐（食堂一荤两素 + 半份饭）</td><td>12–15 元</td></tr>
+<tr><td>晚餐（同上，或外卖简餐）</td><td>12–18 元</td></tr>
+<tr><td>加餐（酸奶/水果/坚果）</td><td>6–9 元</td></tr>
+<tr><td>每周 2 次咖啡奶茶</td><td>摊到每天 4–6 元</td></tr>
+<tr><td><strong>合计</strong></td><td><strong>约 40–55 元/天，1200–1600 元/月</strong></td></tr>
+</tbody></table></div>
+<p>比旧模式（外卖 25–35 一餐 + 奶茶）省。一次性投入只有弹力带 20–30 元，不需要蛋白粉、代餐、任何保健品。</p>
+<h3>4.12 附录：想核对的时候用</h3>
+<p><strong>常见食物的&quot;一份&quot;大概是</strong></p>
+<div class="tw"><table>
+<thead><tr><th>食物</th><th>一份</th><th>热量</th><th>蛋白</th></tr></thead>
+<tbody>
+<tr><td>鸡蛋</td><td>1 个（50 g）</td><td>72</td><td>6.5</td></tr>
+<tr><td>牛奶</td><td>250 ml</td><td>135</td><td>8</td></tr>
+<tr><td>无糖豆浆</td><td>300 ml</td><td>45</td><td>4.5</td></tr>
+<tr><td>米饭（熟）</td><td>150 g</td><td>174</td><td>4</td></tr>
+<tr><td>全麦面包</td><td>2 片（70 g）</td><td>175</td><td>7</td></tr>
+<tr><td>燕麦（干）</td><td>40 g</td><td>150</td><td>5</td></tr>
+<tr><td>鸡胸</td><td>100 g</td><td>133</td><td>24</td></tr>
+<tr><td>鱼</td><td>150 g</td><td>158</td><td>27</td></tr>
+<tr><td>虾</td><td>100 g</td><td>93</td><td>18</td></tr>
+<tr><td>瘦牛肉</td><td>100 g</td><td>125</td><td>20</td></tr>
+<tr><td>北豆腐</td><td>150 g</td><td>174</td><td>18</td></tr>
+<tr><td>无糖酸奶</td><td>150 g</td><td>90</td><td>5</td></tr>
+<tr><td>苹果</td><td>200 g</td><td>104</td><td>0.5</td></tr>
+<tr><td>坚果</td><td>10 g</td><td>60</td><td>2</td></tr>
+</tbody></table></div>
+<p><strong>常见外卖热量（估算）</strong></p>
+<div class="tw"><table>
+<thead><tr><th>食物</th><th>热量</th></tr></thead>
+<tbody>
+<tr><td>兰州牛肉面 1 碗</td><td>550–650</td></tr>
+<tr><td>黄焖鸡米饭（含饭）</td><td>800–1000</td></tr>
+<tr><td>清汤麻辣烫（多菜少丸）</td><td>400–600</td></tr>
+<tr><td>麻辣烫（麻酱 + 丸子 + 面）</td><td>900–1200</td></tr>
+<tr><td>蛋炒饭</td><td>700–850</td></tr>
+<tr><td>盖浇饭</td><td>750–900</td></tr>
+<tr><td>汉堡套餐</td><td>900–1100</td></tr>
+<tr><td>全糖奶茶 500 ml</td><td>400–500</td></tr>
+<tr><td>三分糖奶茶</td><td>300–380</td></tr>
+<tr><td>水饺 12 个</td><td>500</td></tr>
+<tr><td>螺蛳粉</td><td>600–800</td></tr>
+<tr><td>煎饼果子</td><td>500–600</td></tr>
+</tbody></table></div>
+<p><strong>替换规则（同类换同类，热量差不多）</strong></p>
+<ul>
+<li>主食互换：米饭半份 ≈ 玉米 1 根 ≈ 红薯 1 个 ≈ 全麦面包 2 片 ≈ 面条半碗</li>
+<li>蛋白互换：一掌心鸡肉 ≈ 一掌心鱼 ≈ 一掌心虾 ≈ 2 个鸡蛋 ≈ 1 盒牛奶 + 1 个蛋</li>
+<li>蔬菜互换：任何绿叶菜、瓜类、菌菇都可以等量换</li>
+<li>水果互换：苹果 1 个 ≈ 橙子 1 个 ≈ 香蕉 1 根 ≈ 葡萄 1 小串</li>
+</ul>
+<p><strong>想吃零食时的替换</strong></p>
+<div class="tw"><table>
+<thead><tr><th>想吃</th><th>换成</th><th>大概省</th></tr></thead>
+<tbody>
+<tr><td>炸鸡</td><td>烤鸡腿（去皮）</td><td>150–200 kcal</td></tr>
+<tr><td>奶茶</td><td>无糖拿铁 / 纯茶</td><td>150–300 kcal</td></tr>
+<tr><td>薯片</td><td>无糖酸奶 + 水果</td><td>100–150 kcal</td></tr>
+<tr><td>泡面</td><td>清汤面 + 蛋 + 菜</td><td>100 kcal，且蛋白更高</td></tr>
+<tr><td>蛋糕</td><td>黑巧 2 小块 / 水果</td><td>150 kcal</td></tr>
+</tbody></table></div>
+<blockquote>只有在连续 3 周体重不动时，才需要把某一周的三餐按克称一遍核对。日常按手掌估就够。</blockquote>
+<h2>5. 运动方案</h2>
+<h3>5.1 为什么抗阻优先于有氧</h3>
+<p>她 BMI 24.9、又几乎不运动，体重里肌肉占比大概率偏低。只靠有氧往下压体重，掉的不只是脂肪，还容易掉肌肉，结果是&quot;体重轻了但人看起来还是松&quot;。抗阻训练能同时做到三件事：保住肌肉、改善体态（含肩背和臀腿线条）、提高静息代谢。有氧的作用是增加消耗和心肺，排在第二位。</p>
+<h3>5.2 每周结构</h3>
+<div class="tw"><table>
+<thead><tr><th>时间</th><th>内容</th><th>时长</th></tr></thead>
+<tbody>
+<tr><td>周一</td><td>抗阻 A（下肢 + 核心）</td><td>25 min</td></tr>
+<tr><td>周二</td><td>快走或跳操</td><td>30 min</td></tr>
+<tr><td>周三</td><td>抗阻 B（上肢 + 核心）</td><td>25 min</td></tr>
+<tr><td>周四</td><td>快走或跳操</td><td>30 min</td></tr>
+<tr><td>周五</td><td>抗阻 C（全身循环）</td><td>25 min</td></tr>
+<tr><td>周六</td><td>自由活动（逛街、爬楼梯都算）</td><td>—</td></tr>
+<tr><td>周日</td><td>休息或拉伸</td><td>15 min</td></tr>
+<tr><td>每天</td><td>7000–8000 步</td><td>全天累计</td></tr>
+</tbody></table></div>
+<h3>5.3 动作库（宿舍可完成，无需器械，仅需弹力带）</h3>
+<p><strong>热身（每次 5 分钟，必做）</strong>：原地踏步 1 min → 肩绕环 20 次 → 髋绕环 20 次 → 猫牛式 10 次 → 徒手深蹲 10 次。</p>
+<p><strong>抗阻 A：下肢 + 核心</strong></p>
+<div class="tw"><table>
+<thead><tr><th>动作</th><th>组数 × 次数</th><th>要点</th></tr></thead>
+<tbody>
+<tr><td>徒手深蹲</td><td>3 × 12–15</td><td>膝盖对脚尖，下蹲到大腿接近平行</td></tr>
+<tr><td>臀桥</td><td>3 × 15</td><td>顶点停 1 秒，夹臀</td></tr>
+<tr><td>保加利亚分腿蹲（扶床）</td><td>2 × 8/侧</td><td>后脚搭床沿，重心在前腿</td></tr>
+<tr><td>死虫</td><td>3 × 10/侧</td><td>腰贴地，对侧手脚缓慢伸展</td></tr>
+<tr><td>平板支撑</td><td>3 × 20–40 秒</td><td>不塌腰不撅臀</td></tr>
+</tbody></table></div>
+<p><strong>抗阻 B：上肢 + 核心</strong></p>
+<div class="tw"><table>
+<thead><tr><th>动作</th><th>组数 × 次数</th><th>要点</th></tr></thead>
+<tbody>
+<tr><td>跪姿俯卧撑</td><td>3 × 8–12</td><td>手比肩略宽，肘部约 45°</td></tr>
+<tr><td>弹力带划船</td><td>3 × 12–15</td><td>肩胛后缩，不耸肩</td></tr>
+<tr><td>弹力带侧平举</td><td>2 × 12</td><td>小重量，控制下放</td></tr>
+<tr><td>臀桥</td><td>2 × 15</td><td>激活臀部</td></tr>
+<tr><td>侧平板</td><td>2 × 20 秒/侧</td><td>身体成一条直线</td></tr>
+</tbody></table></div>
+<p><strong>抗阻 C：全身循环（3 轮，组间 60 秒）</strong></p>
+<p>深蹲 12 → 跪姿俯卧撑 10 → 弹力带划船 12 → 臀桥 15 → 平板支撑 30 秒</p>
+<p><strong>放松（5 分钟）</strong>：大腿前侧、腘绳肌、臀部、胸肩各静态拉伸 30 秒。</p>
+<h3>5.4 四周进阶</h3>
+<div class="tw"><table>
+<thead><tr><th>周次</th><th>组数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>第 1 周</td><td>每个动作 2 组</td><td>学动作，宁轻勿重，练完不应酸痛到影响走路</td></tr>
+<tr><td>第 2 周</td><td>3 组</td><td>保持次数，感受发力</td></tr>
+<tr><td>第 3 周</td><td>3 组 + 加次数或换更粗的弹力带</td><td>深蹲到 15–20 次，俯卧撑到 12 次</td></tr>
+<tr><td>第 4 周</td><td>维持，经前减量</td><td>经前 3–5 天减到 2 组或只做拉伸</td></tr>
+</tbody></table></div>
+<h3>5.5 有氧与日常活动</h3>
+<ul>
+<li><strong>快走</strong>：30 分钟，能说话但略喘的强度（心率约 110–130）。</li>
+<li><strong>跳操</strong>：跟着视频 20–30 分钟，注意膝踝，穿有缓冲的鞋，别在硬地板上光脚跳。</li>
+<li><strong>NEAT（最容易忽略的部分）</strong>：每小时起身 2 分钟；饭后站或走 10 分钟；能爬楼不坐电梯；提前一站下车。这部分消耗不亚于一次正式运动，且不需要额外时间。</li>
+</ul>
+<hr>
+<h2>6. 作息方案</h2>
+<h3>6.1 睡眠协议（本方案的第一优先级）</h3>
+<p>目标：第 1–2 周从 6 小时到 6.5 小时，第 3–4 周到 7 小时。</p>
+<div class="tw"><table>
+<thead><tr><th>措施</th><th>具体做法</th></tr></thead>
+<tbody>
+<tr><td>固定起床时间</td><td>每天 7:00（含周末，浮动不超过 30 分钟）。<strong>固定起床比固定入睡有效得多</strong></td></tr>
+<tr><td>咖啡因截止</td><td>14:00 之后不喝咖啡、茶、奶茶、可乐</td></tr>
+<tr><td>睡前 60 分钟</td><td>离开屏幕；做低刺激的事（洗澡、拉伸、纸质书）</td></tr>
+<tr><td>床的用途</td><td>床只用于睡觉，不躺着刷手机、不躺着学习</td></tr>
+<tr><td>午睡</td><td>≤20 分钟，不晚于 14:30</td></tr>
+<tr><td>环境</td><td>眼罩 + 耳塞 + 床帘；室温偏凉</td></tr>
+<tr><td>睡不着</td><td>20–30 分钟没睡着就起来做无聊的事，困了再回床，不要在床上硬躺</td></tr>
+</tbody></table></div>
+<p><strong>熬夜的补偿逻辑</strong>：晚睡但早起 = 净睡眠不足。不要用&quot;周末补觉&quot;来还债，补觉会打乱节律，周一更难起。</p>
+<h3>6.2 久坐打断</h3>
+<ul>
+<li>每 45–60 分钟起身 2 分钟（接水、上厕所、站着看手机）</li>
+<li>上课/自习时尽量坐姿挺直，减少腰背代偿</li>
+<li>每天至少一次 10 分钟以上的连续走动</li>
+</ul>
+<h3>6.3 月经周期同步（重要，别忽略）</h3>
+<div class="tw"><table>
+<thead><tr><th>阶段</th><th>时间</th><th>身体状态</th><th>方案调整</th></tr></thead>
+<tbody>
+<tr><td>月经期</td><td>第 1–5 天</td><td>乏力、可能腹痛</td><td>训练减量，以散步/拉伸为主；注意铁和蛋白；<strong>不称重</strong></td></tr>
+<tr><td>卵泡期</td><td>第 6–14 天</td><td>精力好、耐受力强</td><td>训练可加量，减脂效率较高，适合加一次有氧</td></tr>
+<tr><td>黄体期</td><td>第 15–28 天</td><td>食欲上升、水肿、体温升高</td><td><strong>不调目标，维持即可</strong>；增加钾和镁（香蕉、深绿叶菜）；控盐</td></tr>
+<tr><td>经前 3–5 天</td><td>—</td><td>体重可能 +0.5~2 kg</td><td>提前告诉她这是正常的，不解读、不加码</td></tr>
+</tbody></table></div>
+<hr>
+<h2>7. 监测方案</h2>
+<h3>7.1 为什么取消每日称重</h3>
+<p>她&quot;每天称重 + 焦虑 + 怕反弹&quot;，这个组合下每日称重是有害的：</p>
+<ul>
+<li>日波动来源太多：经前水潴留 0.5–2 kg、外卖钠、糖原储备、便秘、甚至前一晚喝了多少水。</li>
+<li>波动会被解读成&quot;努力白费&quot;，触发两种坏结果：放弃，或过度限制。</li>
+<li>每日数据的信息量并不比每周两次高——减脂的真实速度是每周 0.3–0.6 kg，被日噪声完全淹没。</li>
+</ul>
+<p><strong>替代方案</strong>：每周固定 2 次（周三、周日），晨起排空后、同样穿着；<strong>只看 7 日均值，不看单日</strong>。如果她坚持每天称，可以称，但约定&quot;只记录，不解读，不当天的情绪由它决定&quot;。</p>
+<h3>7.2 监测指标与频率</h3>
+<div class="tw"><table>
+<thead><tr><th>指标</th><th>频率</th><th>方法</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td>体重</td><td>每周 2 次</td><td>晨起排空后</td><td>看 7 日均值趋势</td></tr>
+<tr><td>腰围</td><td>每周 1 次</td><td>脐水平，空腹</td><td>比体重更能反映变化</td></tr>
+<tr><td>照片</td><td>每月 1 次</td><td>同角度、同光线、同服装</td><td>对抗&quot;我什么都没变&quot;的错觉</td></tr>
+<tr><td>饮食记录</td><td>每天</td><td>拍照即可，不称重不算卡</td><td>找出隐形热量（酱汁、饮料、零食）</td></tr>
+<tr><td>睡眠</td><td>每天</td><td>记入睡和起床时间</td><td>判断方案是否可持续</td></tr>
+<tr><td>主观感受</td><td>每周</td><td>精力/饥饿/情绪/训练状态，1–5 分</td><td>比体重更早预警</td></tr>
+</tbody></table></div>
+<h3>7.3 数据怎么用</h3>
+<ul>
+<li>连续 2 周体重均值不降 → 先查记录准确性（酱汁、饮料、零食、周末），再查睡眠和步数，<strong>最后</strong>才减 100–150 kcal。</li>
+<li>体重下降过快（每周 &gt;1 kg 连续 2 周，初期水分除外）→ 加到 1600–1700 kcal。</li>
+<li>睡眠持续 &lt;6.5 小时 → 暂停加码，先解决睡眠。</li>
+</ul>
+<hr>
+<h2>8. 四周执行表</h2>
+<h3>第 1 周：只建三个习惯（不设体重目标）</h3>
+<ul class="check">
+<li>早餐先有一掌心蛋白</li>
+<li>每天 6000 步</li>
+<li>固定 7:00 起床</li>
+</ul>
+<ul>
+<li>训练：抗阻 2 次（每个动作 2 组），快走 1 次</li>
+<li>不称重（第一周建立基线，第 1 天早上称一次记下来即可）</li>
+</ul>
+<h3>第 2 周：固化饮食选择</h3>
+<ul class="check">
+<li>外卖按 4.5 的公式点，每周至少 5 天</li>
+<li>奶茶/咖啡改三分糖或无糖</li>
+<li>步数到 7000</li>
+</ul>
+<ul>
+<li>训练：抗阻 3 次（3 组），快走 2 次</li>
+<li>称重：周三、周日</li>
+</ul>
+<h3>第 3 周：加蛋白、加一次有氧</h3>
+<ul class="check">
+<li>早中晚三顿都有蛋白，加餐固定 1 次（酸奶/鸡蛋/水果）</li>
+<li>增加一次 30 分钟有氧</li>
+<li>睡眠到 6.5–7 小时</li>
+</ul>
+<ul>
+<li>训练：抗阻 3 次（加次数或阻力）</li>
+<li>复查：腰围、照片（第一个月对比用）</li>
+</ul>
+<h3>第 4 周：巩固 + 复盘</h3>
+<ul class="check">
+<li>经前 3–5 天不调目标，只维持</li>
+<li>拍对比照</li>
+<li>复盘：哪条最容易做到、哪条最难、下个月保留什么、砍掉什么</li>
+</ul>
+<ul>
+<li>训练：维持，经前减量</li>
+</ul>
+<blockquote>第 1 周不设体重目标，是刻意的。第一周掉的多半是水分，拿它当成功标准，第二周就会失望。</blockquote>
+<hr>
+<h2>9. 预期效果与平台期</h2>
+<h3>9.1 合理的预期曲线</h3>
+<div class="tw"><table>
+<thead><tr><th>时间</th><th>体重变化</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>第 1 周</td><td>−1.5~2.5 kg</td><td>水分、糖原、肠内容物为主（外卖钠减少 + 规律进食），<strong>不是脂肪</strong></td></tr>
+<tr><td>第 2–4 周</td><td>每周 −0.4~0.7 kg</td><td>真实脂肪减少速度</td></tr>
+<tr><td>1 个月合计</td><td>−2.5~3.5 kg</td><td>其中约 1.8–2.5 kg 是脂肪</td></tr>
+<tr><td>腰围</td><td>−3~5 cm</td><td>比体重更早出现</td></tr>
+<tr><td>外观</td><td>脸、脚踝、手指浮肿消退；衣服变松</td><td>通常在第 2–3 周出现</td></tr>
+</tbody></table></div>
+<h3>9.2 平台期怎么处理</h3>
+<p>平台期是正常的，不是失败。ISSN 立场声明里有一句话值得记住：平台期也是&quot;练习维持&quot;的机会——最终目标本来就是维持在一个平台上。</p>
+<p>处理顺序（<strong>从便宜到贵</strong>）：</p>
+<ol>
+<li>核对记录：酱汁、饮料、零食、周末、聚餐——这些是 90% 的&quot;隐形热量&quot;来源。</li>
+<li>查睡眠和步数：睡眠掉到 6 小时以下、步数掉到 4000，缺口就消失了。</li>
+<li>减 100–150 kcal 或加 1000 步（二选一，不要同时）。</li>
+<li>每 2 周只调一次，调完观察 2 周。</li>
+</ol>
+<p><strong>不要做的事</strong>：一次砍 300 kcal、连续断食、加倍有氧。这些会让依从性崩掉，然后反弹更多。</p>
+<hr>
+<h2>10. 长期方案</h2>
+<h3>10.1 阶段划分</h3>
+<div class="tw"><table>
+<thead><tr><th>阶段</th><th>时间</th><th>目标摄入</th><th>重点</th></tr></thead>
+<tbody>
+<tr><td>减脂期</td><td>第 1–6 个月</td><td>1500–1600</td><td>建立习惯，降体脂，保肌肉</td></tr>
+<tr><td>评估期</td><td>第 6–7 个月</td><td>1800 左右</td><td>到 57 kg 后停 4 周，做 2.4 的四项判定</td></tr>
+<tr><td>过渡期</td><td>第 7–8 个月</td><td>1800–1900</td><td>热量缓慢加回，观察体重是否稳定</td></tr>
+<tr><td>维持期</td><td>第 9 个月起</td><td>1850–1950</td><td>体重区间管理，习惯自动化</td></tr>
+</tbody></table></div>
+<blockquote>如果评估点通过、她决定继续往 55 走，减脂期顺延到第 9 个月，维持期从第 10 个月起。</blockquote>
+<h3>10.2 &quot;不反弹&quot;的真正机制</h3>
+<p>体重下降后，总消耗会跟着下降（适应性能耗确实存在，但不是必然，也不是永久的；体重稳定后会部分回弹），同时饥饿激素上升。所以维持期不是&quot;回到从前&quot;，而是换一套可持续的默认设置：</p>
+<ul>
+<li><strong>热量加回 200–300 kcal</strong>，不要一下子放开</li>
+<li><strong>蛋白保持 100–110 g</strong></li>
+<li><strong>抗阻保持每周 2–3 次</strong></li>
+<li><strong>步数保持 7000</strong></li>
+<li><strong>每周称重 1–2 次，长期保留</strong>（这是维持期最有效的单一行为）</li>
+<li><strong>设体重区间而不是单点</strong>：比如 55–58 kg，区间内不干预、不焦虑；连续 2 周超出上限，才启动 2 周的小幅调整</li>
+</ul>
+<blockquote>说明：常被引用的&quot;成功维持体重者的共同特征&quot;（高体力活动、规律称重、吃早餐）来自观察性登记研究，样本自报、存在选择偏倚。它能说明相关性，不能当因果。真正有因果证据的仍是：热量缺口、蛋白、抗阻、行为自我监测。</blockquote>
+<h3>10.3 3 / 6 / 12 个月检查点</h3>
+<div class="tw"><table>
+<thead><tr><th>时间</th><th>检查内容</th></tr></thead>
+<tbody>
+<tr><td>3 个月</td><td>体重、腰围、体脂（有条件）、月经是否规律、训练进步（深蹲次数/弹力带阻力）、是否出现饮食失控</td></tr>
+<tr><td>6 个月</td><td>同上 + 一次体检（血常规、铁蛋白、甲功、血糖、血脂）；到 57 kg 时执行 2.4 的四项判定</td></tr>
+<tr><td>9 个月</td><td>仅在继续减到 55 kg 时才有这一项：月经、精力、训练表现是否仍然正常</td></tr>
+<tr><td>12 个月</td><td>同上 + 骨密度（如长期低能量摄入）、心理状态、是否形成稳定习惯</td></tr>
+</tbody></table></div>
+<h3>10.4 心理与关系层面（长期最关键）</h3>
+<ul>
+<li><strong>把&quot;体重&quot;和&quot;自我价值&quot;解绑。</strong> 体重是一个数字，不是道德评价。</li>
+<li><strong>只设行为目标，不设体重目标</strong>（至少前 3 个月）。行为可控，体重不可控。</li>
+<li><strong>允许波动。</strong> 一个月里有 5 天吃多了，不影响结果；影响结果的是剩下的 25 天。</li>
+<li><strong>不要用&quot;补偿&quot;逻辑</strong>：吃多了就多动/少吃，是进食障碍的常见入口。吃多了就吃多了，下一餐正常。</li>
+<li><strong>她自己的意愿优先。</strong> 如果哪天她说不想减了，尊重她，不要用&quot;为你好&quot;施压。</li>
+</ul>
+<hr>
+<h2>11. 风险信号与就医</h2>
+<p>出现以下任一情况，<strong>暂停减脂，先就医</strong>：</p>
+<ul>
+<li>月经紊乱加重，或停经 ≥3 个月</li>
+<li>出现暴食、催吐、对食物失去控制</li>
+<li>持续胃痛、反酸加重、黑便、吞咽困难</li>
+<li>连续数周每周掉 &gt;1 kg（初期水分除外）</li>
+<li>持续头晕、脱发明显、异常怕冷（可能提示能量不足或甲减）</li>
+<li>情绪持续低落、社交回避、对体重极度焦虑</li>
+</ul>
+<p><strong>建议的基础检查</strong>（不着急，但值得做一次）：</p>
+<div class="tw"><table>
+<thead><tr><th>检查</th><th>目的</th></tr></thead>
+<tbody>
+<tr><td>血常规 + 铁蛋白</td><td>年轻女性缺铁常见，贫血会让人乏力、减脂困难</td></tr>
+<tr><td>甲功三项</td><td>甲减会降低代谢、加重水肿</td></tr>
+<tr><td>空腹血糖 + 胰岛素</td><td>筛查胰岛素抵抗（HOMA-IR）</td></tr>
+<tr><td>性激素六项 + 妇科超声</td><td>月经不规律时排查多囊</td></tr>
+<tr><td>血脂</td><td>基础心血管风险</td></tr>
+</tbody></table></div>
+<blockquote>多囊和胰岛素抵抗在年轻女性中并不罕见，而这两种情况下的减重策略需要调整（比如更重视胰岛素敏感性和抗阻训练）。查一次，是为了排除，不是为了找病。</blockquote>
+<hr>
+<h2>12. 应急预案</h2>
+<div class="tw"><table>
+<thead><tr><th>场景</th><th>做法</th></tr></thead>
+<tbody>
+<tr><td>聚餐/火锅</td><td>按 4.9 四步法；第二天正常吃，不补偿</td></tr>
+<tr><td>宵夜</td><td>无糖酸奶、鸡蛋、牛奶；不点烧烤炸鸡</td></tr>
+<tr><td>暴食一次</td><td>不催吐、不补偿性断食；下一餐正常；记录触发情境（压力？熬夜？没吃早饭？）</td></tr>
+<tr><td>考试周</td><td>只保三件事：早餐蛋白、步数 5000、睡 7 小时；训练暂停</td></tr>
+<tr><td>生病/胃痛</td><td>暂停减脂，恢复正常饮食，病好后再回来</td></tr>
+<tr><td>经前暴食冲动</td><td>提前加一份蛋白加餐；准备低热量替代（黄瓜、无糖酸奶）；不囤零食</td></tr>
+<tr><td>体重突然涨 1–2 kg</td><td>先看是不是经前、是不是吃了外卖、是不是便秘；3 天后再看</td></tr>
+</tbody></table></div>
+<hr>
+<h2>13. 男友执行手册</h2>
+<h3>不要做</h3>
+<ul>
+<li>不问&quot;今天称了吗&quot;&quot;怎么没掉&quot;</li>
+<li>不评价她的身体（&quot;你瘦了&quot;&quot;你这里还有肉&quot;都别说）</li>
+<li>不比较（和别人比、和过去比）</li>
+<li>不替她做决定（吃不吃、练不练，她说了算）</li>
+<li>不在她经前一周提目标</li>
+</ul>
+<h3>要做</h3>
+<ul>
+<li><strong>承担执行成本</strong>：买早餐、备水果、陪走那段路、帮她记</li>
+<li><strong>夸行为不夸结果</strong>：&quot;你今天抗阻做完了&quot;比&quot;你瘦了&quot;有用一百倍</li>
+<li><strong>在她经前一周主动降低期待</strong>，告诉她&quot;这周不掉是正常的&quot;</li>
+<li><strong>自己一起吃</strong>，而不是看着她吃</li>
+<li><strong>她不想练的那天，陪她散步也算</strong></li>
+</ul>
+<h3>一句话原则</h3>
+<blockquote>你的角色是&quot;降低她执行这件事的成本&quot;，不是&quot;监督她执行这件事&quot;。</blockquote>
+<hr>
+<h2>14. 一页打卡表</h2>
+<h3>每日（5 项）</h3>
+<ul class="check">
+<li>三餐每顿都有一掌心蛋白（早餐也要）</li>
+<li>主食按&quot;半份/一拳头&quot;打</li>
+<li>步数 7000</li>
+<li>晚餐睡前 3 小时，饮料都是无糖</li>
+<li>睡够 7 小时（第 3 周起）</li>
+</ul>
+<h3>每周（3 项）</h3>
+<ul class="check">
+<li>抗阻 3 次</li>
+<li>有氧 2 次</li>
+<li>称重 2 次 + 腰围 1 次</li>
+</ul>
+<h3>每月（1 项）</h3>
+<ul class="check">
+<li>同角度照片 + 复盘（保留什么、砍掉什么）</li>
+</ul>
+<hr>
+<h2>附录：参考资料</h2>
+<ol>
+<li>Aragon AA, et al. International Society of Sports Nutrition position stand: diets for body weight reduction. <em>J Int Soc Sports Nutr</em>. 2026;23(1):2740266. https://doi.org/10.1080/15502783.2026.2740266</li>
+<li>Abu Suilik H, et al. Intermittent fasting strategies for MASLD: systematic review and network meta-analysis. <em>Clin Nutr ESPEN</em>. 2026;75:103415. https://doi.org/10.1016/j.clnesp.2026.103415</li>
+<li>卫生行业标准《成人体重判定》（WS/T 428-2013）：BMI 18.5–23.9 正常，24.0–27.9 超重，≥28.0 肥胖。</li>
+<li>国家卫生健康委《成人肥胖食养指南（2024 年版）》与《居民体重管理核心知识（2024 年版）》。</li>
+<li>世界卫生组织《关于身体活动和久坐行为的指南》（2020）：成人每周 150–300 分钟中等强度有氧 + 2 次以上力量训练。</li>
+</ol>
+<hr>
+<p><em>本方案为行为与营养建议，不构成医疗诊断或处方。涉及药物（包括减重药物）必须在医生指导下使用；她的 BMI 24.9 未达到国内减重药物通常要求的适应证（约 ≥27 伴合并症或 ≥30），不建议自行购买任何减肥产品。</em></p>
+</div>
+</body>
+</html>
